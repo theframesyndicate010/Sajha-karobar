@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sajha karobar - Bills History</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#16a34a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ddd; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+
+
+        .active-bill-type {
+            background-color: #16a34a;
+            color: white;
+            box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+        }
+
+        #buyBillsBtn {
+            background-color: transparent;
+            color: #666;
+        }
+
+        #buyBillsBtn.active-bill-type {
+            background-color: #16a34a;
+            color: white;
+            box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 h-screen overflow-hidden flex">
+
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col min-w-0 h-full">
+        
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-4 lg:px-8 z-10">
+            <!-- Left: Mobile Menu & Search -->
+            <div class="flex items-center gap-4 flex-1">
+                <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-green-600 p-1">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                
+                <div class="relative w-full max-w-md hidden sm:block">
+                    <span class="absolute left-3 top-2.5 text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" placeholder="Search bills..." class="w-full bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-green-200 rounded-lg py-2 pl-10 pr-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-100">
+                </div>
+            </div>
+
+            <!-- Right: Notifications & Profile -->
+            <div class="flex items-center gap-4 lg:gap-6">
+                <button class="relative text-gray-400 hover:text-green-600 transition p-2 rounded-full hover:bg-gray-50">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-green-500 rounded-full border-2 border-white"></span>
+                </button>
+                
+                <div class="h-8 w-px bg-gray-200 hidden sm:block"></div>
+                
+                <div class="flex items-center gap-3 cursor-pointer p-1 rounded-lg hover:bg-gray-50 transition">
+                    <div class="text-right hidden sm:block">
+                        <p id="headerUserName" class="text-sm font-bold text-gray-800 leading-none">Loading...</p>
+                    </div>
+                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-green-100 to-green-200 text-green-700 border border-green-200 flex items-center justify-center font-bold shadow-sm">
+                        ?
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto p-4 lg:p-8">
+            
+            <!-- Page Header -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Bills History</h2>
+                    <p class="text-gray-500 text-sm mt-1">View, search, and manage all your bills</p>
+                </div>
+                
+                <!-- Bill Type Toggle -->
+                <div class="flex items-center gap-2 bg-white p-1 rounded-lg border border-gray-300 w-fit">
+                    <button id="sellBillsBtn" class="px-4 py-2 rounded-md font-medium transition active-bill-type" onclick="switchBillType('sell')">
+                        <i class="fa-solid fa-arrow-up-right-dots mr-2"></i> Sell
+                    </button>
+                    <button id="buyBillsBtn" class="px-4 py-2 rounded-md font-medium transition" onclick="switchBillType('buy')">
+                        <i class="fa-solid fa-arrow-down-left-dots mr-2"></i> Buy
+                    </button>
+                </div>
+            </div>
+
+                    <!-- Search and Filter Section -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 mb-4">
+                        <div class="flex flex-wrap gap-2 items-center">
+                            <input type="text" id="searchRetailer" placeholder="Retailer..." 
+                                class="px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <input type="date" id="filterDate" 
+                                class="px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <select id="filterPaymentType" 
+                                class="px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="">All Types</option>
+                                <option value="full">Full Payment</option>
+                                <option value="partial">Partial Payment</option>
+                            </select>
+                            <button onclick="filterBills()" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                                🔍 Search
+                            </button>
+                            <button onclick="resetFilters()" class="bg-gray-400 hover:bg-gray-500 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                                ↻ Reset
+                            </button>
+                            <button onclick="exportToCSV()" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                                📥 CSV
+                            </button>
+                            <button onclick="deleteAllBills()" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bills Table -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                        <div id="billsContainer" class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-gray-50 border-b border-gray-200">
+                                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Bill Title</th>
+                                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Retailer</th>
+                                        <th class="px-6 py-3 text-center text-sm font-semibold text-gray-700">Date</th>
+                                        <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700">Amount (Rs)</th>
+                                        <th class="px-6 py-3 text-center text-sm font-semibold text-gray-700">Payment Type</th>
+                                        <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700">Paid Amount</th>
+                                        <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700">Balance</th>
+                                        <th class="px-6 py-3 text-center text-sm font-semibold text-gray-700">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="billsTableBody" class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td colspan="8" class="px-6 py-8 text-center text-gray-500">
+                                            No bills found. Start by creating a new bill.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Stats Summary -->
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
+                            <p class="text-gray-600 text-[10px] font-medium">Total Bills</p>
+                            <p class="text-lg font-bold text-green-600" id="totalBills">0</p>
+                        </div>
+                        <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
+                            <p class="text-gray-600 text-[10px] font-medium">Total Revenue</p>
+                            <p class="text-lg font-bold text-green-600" id="totalRevenue">Rs 0.00</p>
+                        </div>
+                        <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
+                            <p class="text-gray-600 text-[10px] font-medium">Paid Amount</p>
+                            <p class="text-lg font-bold text-green-600" id="totalPaid">Rs 0.00</p>
+                        </div>
+                        <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
+                            <p class="text-gray-600 text-[10px] font-medium">Pending Balance</p>
+                            <p class="text-lg font-bold text-green-600" id="totalBalance">Rs 0.00</p>
+                        </div>
+                    </div>
+        </div>
+    </main>
+
+    <!-- Bill Details Modal -->
+    <div id="billModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+            <div class="p-6 border-b">
+                <h3 class="text-2xl font-bold text-gray-800">Bill Details</h3>
+            </div>
+            <div id="billDetails" class="p-6">
+                <!-- Details will be populated by JavaScript -->
+            </div>
+            <div class="p-6 border-t flex gap-2 justify-end">
+                <button id="modalActionBtn" onclick="handleModalAction()" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                    🖨️ Print
+                </button>
+                <button onclick="closeBillModal()" class="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/Js/components/sidebar.js"></script>
+    <script src="/assets/Js/bills.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initSidebar('bills');
+        });
+    </script>
+</body>
+</html>
