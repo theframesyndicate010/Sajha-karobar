@@ -1,0 +1,19 @@
+# Clean URL routes → HTML pages
+/signup          /public/signup.html        200
+/login           /public/login.html         200
+/reset-password  /public/reset-password.html 200
+/dashboard       /public/dashboard.html     200
+/product         /public/product.html       200
+/add-product     /public/add-product.html   200
+/sale            /public/sale.html          200
+/add-bill        /public/add-bill.html      200
+/bill            /public/add-bill.html      200
+/bills           /public/bills.html         200
+/stock           /public/stock.html         200
+/workers         /public/workers.html       200
+
+# API proxy to backend (update YOUR_BACKEND_URL after deploying backend)
+/api/*           YOUR_BACKEND_URL/api/:splat  200
+
+# Fallback
+/*               /index.html                200
