@@ -42,7 +42,6 @@ export const getCategories = async (req, res) => {
     }
 
     const shopTypeId = tenant.shop_type_id;
-    console.log(`🏪 Shop Type ID: ${shopTypeId}`);
 
     // Fetch categories for this shop type
     const { data: categories, error: cError } = await supabase

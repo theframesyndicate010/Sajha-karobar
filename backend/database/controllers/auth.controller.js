@@ -1,5 +1,6 @@
 // Import both the public and admin clients from the centralized config
 import { supabase, supabaseAdmin } from '../config/Supabase.js';
+import { sendOTP, verifyOTP } from '../services/mail.service.js';
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -146,5 +147,72 @@ export const register = async (req, res) => {
 
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+};
+
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ message: 'Email is required' });
+  }
+
+  try {
+    // Verify the email exists in Supabase before sending OTP
+    const { data: userList, error: listError } = await supabaseAdmin.auth.admin.listUsers();
+    const userExists = userList?.users?.some(u => u.email?.toLowerCase() === email.toLowerCase());
+    if (listError || !userExists) {
+      // Don't reveal whether email exists — always return success message
+      return res.json({ message: 'OTP code sent to your email' });
+    }
+
+    await sendOTP(email);
+    res.json({ message: 'OTP code sent to your email' });
+  } catch (err) {
+    console.error('Forgot password error:', err.message);
+    res.status(500).json({ message: 'Failed to send OTP. Please try again later.' });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  const { token, password, email } = req.body;
+  if (!token || !password || !email) {
+    return res.status(400).json({ message: 'OTP code, email, and new password are required' });
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({ message: 'Password must be at least 6 characters' });
+  }
+
+  try {
+    // Verify the OTP from our mail service
+    const result = verifyOTP(email, token);
+
+    if (!result.valid) {
+      return res.status(400).json({ message: result.message, code: result.code });
+    }
+
+    // Find the user by email and update password
+    const { data: userList, error: listError } = await supabaseAdmin.auth.admin.listUsers();
+    if (listError) {
+      return res.status(500).json({ message: 'Server error. Please try again.' });
+    }
+
+    const user = userList?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase());
+    if (!user) {
+      return res.status(400).json({ message: 'User not found.' });
+    }
+
+    const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(
+      user.id,
+      { password }
+    );
+
+    if (updateError) {
+      return res.status(400).json({ message: updateError.message });
+    }
+
+    res.json({ message: 'Password reset successful' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };

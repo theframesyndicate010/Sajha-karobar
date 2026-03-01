@@ -89,5 +89,5 @@ for (const [route, file] of Object.entries(pageRoutes)) {
 
 // ─── Start Server ────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`✓ Server running on port ${PORT} [${NODE_ENV}]`);
+  console.log(`✓ Server running on port http://localhost:${PORT} [${NODE_ENV}]`);
 });
