@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sajha karobar - Bills History</title>
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#16a34a">
+    <meta name="theme-color" content="#166534">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{green:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#22c55e',500:'#15803d',600:'#166534',700:'#14532d',800:'#052e16',900:'#022c22'}}}}}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -37,9 +38,32 @@
 
 
         .active-bill-type {
-            background-color: #16a34a;
+            background-color: #166534;
             color: white;
             box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+        }
+
+        /* Mobile table responsive */
+        @media (max-width: 768px) {
+            table {
+                font-size: 11px;
+            }
+            table thead th {
+                padding: 6px 8px;
+                font-size: 10px;
+                white-space: nowrap;
+            }
+            table tbody td {
+                padding: 6px 8px;
+                font-size: 11px;
+                white-space: nowrap;
+            }
+            .overflow-x-auto {
+                -webkit-overflow-scrolling: touch;
+            }
+            .overflow-x-auto table {
+                min-width: 700px;
+            }
         }
 
         #buyBillsBtn {
@@ -48,7 +72,7 @@
         }
 
         #buyBillsBtn.active-bill-type {
-            background-color: #16a34a;
+            background-color: #166534;
             color: white;
             box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
         }
@@ -121,27 +145,34 @@
 
                     <!-- Search and Filter Section -->
                     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 mb-4">
-                        <div class="flex flex-wrap gap-2 items-center">
+                        <!-- Row 1: Inputs -->
+                        <div class="flex gap-2 items-center mb-2">
                             <input type="text" id="searchRetailer" placeholder="Retailer..." 
-                                class="px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
                             <input type="date" id="filterDate" 
-                                class="px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        </div>
+                        <!-- Row 2: Select + Search -->
+                        <div class="flex gap-2 items-center mb-2">
                             <select id="filterPaymentType" 
-                                class="px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
                                 <option value="">All Types</option>
                                 <option value="full">Full Payment</option>
                                 <option value="partial">Partial Payment</option>
                             </select>
-                            <button onclick="filterBills()" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                            <button onclick="filterBills()" class="flex-1 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 🔍 Search
                             </button>
-                            <button onclick="resetFilters()" class="bg-gray-400 hover:bg-gray-500 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                        </div>
+                        <!-- Row 3: Action Buttons -->
+                        <div class="flex gap-2 items-center">
+                            <button onclick="resetFilters()" class="flex-1 bg-gray-400 hover:bg-gray-500 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 ↻ Reset
                             </button>
-                            <button onclick="exportToCSV()" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                            <button onclick="exportToCSV()" class="flex-1 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 📥 CSV
                             </button>
-                            <button onclick="deleteAllBills()" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                            <button onclick="deleteAllBills()" class="flex-1 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 🗑️ Delete
                             </button>
                         </div>
@@ -152,15 +183,15 @@
                         <div id="billsContainer" class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="bg-gray-50 border-b border-gray-200">
-                                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Bill Title</th>
-                                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Retailer</th>
-                                        <th class="px-6 py-3 text-center text-sm font-semibold text-gray-700">Date</th>
-                                        <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700">Amount (Rs)</th>
-                                        <th class="px-6 py-3 text-center text-sm font-semibold text-gray-700">Payment Type</th>
-                                        <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700">Paid Amount</th>
-                                        <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700">Balance</th>
-                                        <th class="px-6 py-3 text-center text-sm font-semibold text-gray-700">Actions</th>
+                                    <tr class="bg-green-600 border-b border-green-700">
+                                        <th class="px-6 py-3 text-left text-sm font-semibold text-white">Bill Title</th>
+                                        <th class="px-6 py-3 text-left text-sm font-semibold text-white">Retailer</th>
+                                        <th class="px-6 py-3 text-center text-sm font-semibold text-white">Date</th>
+                                        <th class="px-6 py-3 text-right text-sm font-semibold text-white">Amount (Rs)</th>
+                                        <th class="px-6 py-3 text-center text-sm font-semibold text-white">Payment Type</th>
+                                        <th class="px-6 py-3 text-right text-sm font-semibold text-white">Paid Amount</th>
+                                        <th class="px-6 py-3 text-right text-sm font-semibold text-white">Balance</th>
+                                        <th class="px-6 py-3 text-center text-sm font-semibold text-white">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody id="billsTableBody" class="divide-y divide-gray-200">

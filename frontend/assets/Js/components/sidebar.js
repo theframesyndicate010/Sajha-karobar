@@ -104,7 +104,7 @@ function createSidebar(activePage = '') {
             <!-- Logo -->
             <div class="p-6 border-b border-gray-100">
                 <div class="flex items-center gap-3">
-                    <div class="bg-[#16a34a] text-white h-10 w-10 flex items-center justify-center rounded-lg font-bold text-2xl shadow-md" id="sidebarInitials">...</div>
+                    <div class="bg-[#166534] text-white h-10 w-10 flex items-center justify-center rounded-lg font-bold text-2xl shadow-md" id="sidebarInitials">...</div>
                     <div>
                         <h1 class="text-xl font-bold text-gray-800 tracking-tight" id="sidebarBusinessName">Loading...</h1>
                         <p class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">"साझा समाधान, सजिलो व्यापार"</p>
@@ -158,9 +158,16 @@ function createSidebar(activePage = '') {
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebarOverlay');
+    const bottomNav = document.getElementById('bottomNav');
     if (!sidebar || !overlay) return;
     sidebar.classList.toggle('-translate-x-full');
     overlay.classList.toggle('hidden');
+
+    // Hide bottom nav when sidebar is open, show when closed
+    if (bottomNav) {
+        const sidebarOpen = !sidebar.classList.contains('-translate-x-full');
+        bottomNav.style.display = sidebarOpen ? 'none' : 'flex';
+    }
 }
 
 // Logout function
@@ -339,15 +346,15 @@ function getSidebarStyles() {
             align-items: center;
         }
         .sidebar-link:hover {
-            background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
+            background: linear-gradient(90deg, #166534 0%, #15803d 100%);
             color: #fff !important;
-            box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(22, 101, 52, 0.3);
             transform: translateX(4px);
         }
         .sidebar-link.active {
-            background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
+            background: linear-gradient(90deg, #166534 0%, #15803d 100%);
             color: #fff !important;
-            box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(22, 101, 52, 0.3);
         }
         .sidebar-link:hover i,
         .sidebar-link.active i {
@@ -371,7 +378,7 @@ function getSidebarStyles() {
             -webkit-tap-highlight-color: transparent;
         }
         .bottom-nav-item.active {
-            color: #16a34a;
+            color: #166534;
         }
         .bottom-nav-item.active i {
             transform: scale(1.1);

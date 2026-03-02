@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sajha karobar - Retail Dashboard</title>
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#16a34a">
+    <meta name="theme-color" content="#166534">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -15,6 +15,7 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{green:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#22c55e',500:'#15803d',600:'#166534',700:'#14532d',800:'#052e16',900:'#022c22'}}}}}</script>
     
     <!-- Chart.js for the graphs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -51,6 +52,29 @@
         .stat-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Mobile table responsive */
+        @media (max-width: 768px) {
+            table {
+                font-size: 11px;
+            }
+            table thead th {
+                padding: 6px 8px;
+                font-size: 10px;
+                white-space: nowrap;
+            }
+            table tbody td {
+                padding: 6px 8px;
+                font-size: 11px;
+                white-space: nowrap;
+            }
+            .overflow-x-auto {
+                -webkit-overflow-scrolling: touch;
+            }
+            .overflow-x-auto table {
+                min-width: 600px;
+            }
         }
     </style>
 </head>
@@ -111,7 +135,7 @@
                     <button class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium text-sm shadow-sm transition">
                         <i class="fa-solid fa-download mr-2"></i> Report
                     </button>
-                    <button class="bg-[#16a34a] hover:bg-[#15803d] text-white px-5 py-2 rounded-lg font-medium shadow-md shadow-green-200 flex items-center gap-2 transition active:scale-95">
+                    <button class="bg-[#166534] hover:bg-[#15803d] text-white px-5 py-2 rounded-lg font-medium shadow-md shadow-green-200 flex items-center gap-2 transition active:scale-95">
                         <i class="fa-solid fa-computer"></i> POS Counter
                     </button>
                 </div>
@@ -214,7 +238,7 @@
                 <div class="overflow-x-auto">
                     <table id="product-table" class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                            <tr class="bg-green-600 text-white text-xs uppercase tracking-wider">
                                 <th class="py-4 px-6 font-semibold">Product Name</th>
                                 <th class="py-4 px-6 font-semibold">Category</th>
                                 <th class="py-4 px-6 font-semibold">Price</th>
@@ -244,7 +268,7 @@
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                            <tr class="bg-green-600 text-white text-xs uppercase tracking-wider">
                                 <th class="py-4 px-6 font-semibold">Bill ID</th>
                                 <th class="py-4 px-6 font-semibold">Customer Name</th>
                                 <th class="py-4 px-6 font-semibold">Date</th>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sajha karobar - Sales Management</title>
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#16a34a">
+    <meta name="theme-color" content="#166534">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -15,6 +15,7 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{green:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#22c55e',500:'#15803d',600:'#166534',700:'#14532d',800:'#052e16',900:'#022c22'}}}}}</script>
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -48,6 +49,96 @@
         .stat-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Mobile table responsive */
+        @media (max-width: 768px) {
+            table {
+                font-size: 11px;
+            }
+            table thead th {
+                padding: 6px 8px;
+                font-size: 10px;
+                white-space: nowrap;
+            }
+            table tbody td {
+                padding: 6px 8px;
+                font-size: 11px;
+                white-space: nowrap;
+            }
+            .overflow-x-auto {
+                -webkit-overflow-scrolling: touch;
+            }
+            .overflow-x-auto table {
+                min-width: 600px;
+            }
+
+            /* Sale modal form compact on mobile */
+            #saleModal input,
+            #saleModal select,
+            #saleModal textarea {
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+                border-radius: 6px !important;
+            }
+            #saleModal label {
+                font-size: 11px !important;
+                margin-bottom: 2px !important;
+            }
+            #saleModal h4 {
+                font-size: 11px !important;
+                margin-bottom: 8px !important;
+            }
+            #saleModal .p-6 {
+                padding: 12px !important;
+            }
+            #saleModal .p-4 {
+                padding: 10px !important;
+            }
+            #saleModal .px-6 {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+            #saleModal .mb-6 {
+                margin-bottom: 12px !important;
+            }
+            #saleModal .gap-4 {
+                gap: 8px !important;
+            }
+            #saleModal .gap-3 {
+                gap: 6px !important;
+            }
+            #saleModal .rounded-xl {
+                padding: 8px !important;
+            }
+            #saleModal .rounded-xl i.text-2xl {
+                font-size: 14px !important;
+                margin-bottom: 0 !important;
+            }
+            #saleModal .rounded-xl p.font-medium {
+                font-size: 10px !important;
+            }
+            /* Payment method cards compact */
+            #saleModal .grid.grid-cols-2.gap-3 {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 4px !important;
+            }
+            #saleModal .grid.grid-cols-2.gap-3 .border-2 {
+                padding: 6px 4px !important;
+                border-radius: 8px !important;
+                border-width: 1.5px !important;
+            }
+            #saleModal .grid.grid-cols-2.gap-3 .border-2 i {
+                font-size: 14px !important;
+                margin-bottom: 2px !important;
+            }
+            #saleModal .grid.grid-cols-2.gap-3 .border-2 p {
+                font-size: 9px !important;
+            }
+            #saleModal button {
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+            }
         }
     </style>
 </head>
@@ -105,7 +196,7 @@
                     <p class="text-gray-500 text-sm mt-1">Track and manage all sales transactions.</p>
                 </div>
                 <div class="flex gap-3">
-                    <button id="newSaleBtn" class="bg-[#16a34a] hover:bg-[#15803d] text-white px-5 py-2 rounded-lg font-medium shadow-md shadow-green-200 flex items-center gap-2 transition active:scale-95">
+                    <button id="newSaleBtn" class="bg-[#166534] hover:bg-[#15803d] text-white px-5 py-2 rounded-lg font-medium shadow-md shadow-green-200 flex items-center gap-2 transition active:scale-95">
                         <i class="fa-solid fa-plus"></i> New Sale
                     </button>
                 </div>
@@ -161,15 +252,15 @@
                         <h3 class="font-bold text-gray-800 text-lg">Sales Transactions</h3>
                         <p class="text-xs text-gray-500">Latest sales records</p>
                     </div>
-                    <div class="flex gap-2 flex-wrap">
-                        <input type="text" id="sale-search" placeholder="Search sale ID or customer..." class="w-full sm:w-64 bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-green-200 rounded-lg py-2 px-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-100">
-                        <select id="date-filter" class="text-xs border border-gray-200 bg-gray-50 rounded-lg px-3 py-2 outline-none focus:ring-1 focus:ring-green-200 cursor-pointer">
+                    <div class="flex gap-1 lg:gap-2 items-center">
+                        <input type="text" id="sale-search" placeholder="Search sale ID or customer..." class="flex-1 min-w-0 bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-green-200 rounded-lg py-1.5 lg:py-2 px-2 lg:px-4 text-[10px] lg:text-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-100">
+                        <select id="date-filter" class="text-[10px] lg:text-xs border border-gray-200 bg-gray-50 rounded-lg px-1.5 lg:px-3 py-1.5 lg:py-2 outline-none focus:ring-1 focus:ring-green-200 cursor-pointer">
                             <option value="">All Dates</option>
                             <option value="today">Today</option>
                             <option value="week">This Week</option>
                             <option value="month">This Month</option>
                         </select>
-                        <button class="text-xs font-medium text-white px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center gap-2">
+                        <button class="text-[10px] lg:text-xs font-medium text-white px-2 lg:px-4 py-1.5 lg:py-2 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center gap-1 lg:gap-2 whitespace-nowrap">
                             <i class="fa-solid fa-download"></i> Export
                         </button>
                     </div>
@@ -178,7 +269,7 @@
                 <div class="overflow-x-auto">
                     <table id="sale-table" class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                            <tr class="bg-green-600 text-white text-xs uppercase tracking-wider">
                                 <th class="py-4 px-6 font-semibold">Sale ID</th>
                                 <th class="py-4 px-6 font-semibold">Customer</th>
                                 <th class="py-4 px-6 font-semibold">Items</th>
@@ -203,7 +294,7 @@
         <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeSaleModal()"></div>
         <div class="absolute inset-4 lg:inset-auto lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-full lg:max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-[#16a34a] to-[#22c55e] px-6 py-4 flex items-center justify-between">
+            <div class="bg-gradient-to-r from-[#166534] to-[#15803d] px-6 py-4 flex items-center justify-between">
                 <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-cart-plus mr-2"></i> New Sale</h3>
                 <button onclick="closeSaleModal()" class="text-white hover:bg-white/20 p-2 rounded-lg transition">
                     <i class="fa-solid fa-xmark text-xl"></i>
@@ -261,8 +352,8 @@
                         <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Sale Items</h4>
                         <div class="border border-gray-200 rounded-xl overflow-x-auto">
                             <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr class="text-xs text-gray-500 uppercase tracking-wider">
+                                <thead class="bg-green-600">
+                                    <tr class="text-xs text-white uppercase tracking-wider">
                                         <th class="py-3 px-4 text-left font-semibold">Product</th>
                                         <th class="py-3 px-4 text-center font-semibold">Price</th>
                                         <th class="py-3 px-4 text-center font-semibold">Qty</th>
@@ -337,7 +428,7 @@
                                 <div class="border-t border-gray-200 my-3"></div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-lg font-bold text-gray-800">Grand Total</span>
-                                    <span id="grandTotal" class="text-xl font-bold text-[#16a34a]">Rs 0</span>
+                                    <span id="grandTotal" class="text-xl font-bold text-[#166534]">Rs 0</span>
                                 </div>
                             </div>
                         </div>
@@ -356,7 +447,7 @@
                 <button onclick="closeSaleModal()" class="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition">
                     Cancel
                 </button>
-                <button onclick="saveSale()" class="px-6 py-2.5 bg-[#16a34a] hover:bg-[#15803d] text-white rounded-lg font-medium shadow-md shadow-green-200 transition flex items-center justify-center gap-2">
+                <button onclick="saveSale()" class="px-6 py-2.5 bg-[#166534] hover:bg-[#15803d] text-white rounded-lg font-medium shadow-md shadow-green-200 transition flex items-center justify-center gap-2">
                     <i class="fa-solid fa-check"></i> Complete Sale
                 </button>
             </div>
