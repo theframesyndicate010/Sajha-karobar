@@ -54,11 +54,11 @@ function switchBillType(type) {
     const buyBtn = document.getElementById('buyBillsBtn');
     
     if (type === 'sell') {
-        sellBtn.classList.add('active-bill-type');
-        buyBtn.classList.remove('active-bill-type');
+        sellBtn.classList.add('active-bank-type');
+        buyBtn.classList.remove('active-bank-type');
     } else {
-        buyBtn.classList.add('active-bill-type');
-        sellBtn.classList.remove('active-bill-type');
+        buyBtn.classList.add('active-bank-type');
+        sellBtn.classList.remove('active-bank-type');
     }
     
     loadBills();

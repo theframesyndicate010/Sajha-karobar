@@ -165,8 +165,8 @@ function switchBillMode(mode) {
         const buyBtn = document.getElementById('buyModeBtn');
         
         if (mode === 'sell') {
-            sellBtn.classList.add('active-mode');
-            buyBtn.classList.remove('active-mode');
+            sellBtn.classList.add('active-bank-mode');
+            buyBtn.classList.remove('active-bank-mode');
             const icon = document.querySelector('#retailerSection h3 i');
             if (icon) {
                 icon.className = 'fa-solid fa-user-tie text-[#0F766E]';
@@ -175,8 +175,8 @@ function switchBillMode(mode) {
             document.getElementById('partyNameLabel').textContent = 'Retailer';
             document.getElementById('retailerName').placeholder = 'e.g., Sita Retailers, Gopal Kirana';
         } else {
-            buyBtn.classList.add('active-mode');
-            sellBtn.classList.remove('active-mode');
+            buyBtn.classList.add('active-bank-mode');
+            sellBtn.classList.remove('active-bank-mode');
             const icon = document.querySelector('#retailerSection h3 i');
             if (icon) {
                 icon.className = 'fa-solid fa-user-tie text-[#0F766E]';
