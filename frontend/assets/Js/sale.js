@@ -101,7 +101,7 @@ async function loadSalesTable() {
 
             return `
                 <tr class="hover:bg-gray-50 transition group" data-sale-id="${sale.id}">
-                    <td class="py-4 px-6 font-medium text-[#2563eb]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
+                    <td class="py-4 px-6 font-medium text-[#16a34a]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
                     <td class="py-4 px-6">
                         <div class="flex items-center gap-3">
                             <div class="h-8 w-8 rounded-full bg-${color}-100 text-${color}-600 flex items-center justify-center text-xs font-bold">${initials}</div>
@@ -111,20 +111,20 @@ async function loadSalesTable() {
                     <td class="py-4 px-6 text-gray-500">${sale.quantity_sold || 0} items</td>
                     <td class="py-4 px-6 font-bold text-gray-800">Rs ${amount}</td>
                     <td class="py-4 px-6">
-                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-50 text-[#1e40af] border border-slate-200">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-50 text-[#15803d] border border-slate-200">
                             Sale
                         </span>
                     </td>
                     <td class="py-4 px-6 text-gray-500">${date}</td>
                     <td class="py-4 px-6 text-right">
                         <div class="flex justify-end gap-2">
-                            <button class="text-gray-400 hover:text-[#2563eb] p-1 transition" title="Print" onclick="printSaleReceipt(${idx})">
+                            <button class="text-gray-400 hover:text-[#16a34a] p-1 transition" title="Print" onclick="printSaleReceipt(${idx})">
                                 <i class="fa-solid fa-print text-xs"></i>
                             </button>
-                            <button class="text-gray-400 hover:text-[#2563eb] p-1 transition" title="View Details">
+                            <button class="text-gray-400 hover:text-[#16a34a] p-1 transition" title="View Details">
                                 <i class="fa-solid fa-eye text-xs"></i>
                             </button>
-                            <button class="text-gray-400 hover:text-[#2563eb] p-1 transition" title="Delete" onclick="deleteSaleRecord('${sale.id}')">
+                            <button class="text-gray-400 hover:text-[#16a34a] p-1 transition" title="Delete" onclick="deleteSaleRecord('${sale.id}')">
                                 <i class="fa-solid fa-trash text-xs"></i>
                             </button>
                         </div>
@@ -448,7 +448,7 @@ function renderSaleItems() {
             </td>
             <td class="py-3 px-4 text-center font-bold text-gray-800">Rs ${item.total.toLocaleString()}</td>
             <td class="py-3 px-4 text-center">
-                <button onclick="removeItem(${index})" class="text-[#2563eb] hover:text-[#1e40af] hover:bg-slate-50 p-2 rounded-lg transition">
+                <button onclick="removeItem(${index})" class="text-[#16a34a] hover:text-[#15803d] hover:bg-slate-50 p-2 rounded-lg transition">
                     <i class="fa-solid fa-trash text-sm"></i>
                 </button>
             </td>
@@ -585,7 +585,7 @@ function openViewModal(saleId) {
         content.innerHTML = `
             <div class="space-y-4">
                 <div class="flex justify-between items-center pb-4 border-b">
-                    <span class="text-2xl font-bold text-[#2563eb]">${saleData.id}</span>
+                    <span class="text-2xl font-bold text-[#16a34a]">${saleData.id}</span>
                     <span class="text-sm text-gray-500">${saleData.date}</span>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
@@ -603,7 +603,7 @@ function openViewModal(saleId) {
                     </div>
                     <div>
                         <p class="text-xs text-gray-500 uppercase">Total Amount</p>
-                        <p class="font-bold text-lg text-[#2563eb]">${saleData.total}</p>
+                        <p class="font-bold text-lg text-[#16a34a]">${saleData.total}</p>
                     </div>
                 </div>
             </div>

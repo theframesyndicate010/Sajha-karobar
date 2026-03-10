@@ -1,5 +1,5 @@
 // Version name (change when you update files)
-const CACHE_NAME = "pwa-cache-v13";
+const CACHE_NAME = "pwa-cache-v14";
 
 // Static assets to pre-cache
 const ASSETS_TO_CACHE = [
