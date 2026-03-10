@@ -61,11 +61,11 @@ function initChart() {
             datasets: [{
                 label: 'Revenue (Rs)',
                 data: [0, 0, 0, 0, 0, 0, 0],
-                borderColor: '#16a34a',
+                borderColor: '#7C3AED',
                 backgroundColor: gradient,
                 borderWidth: 2,
                 pointBackgroundColor: '#fff',
-                pointBorderColor: '#16a34a',
+                pointBorderColor: '#7C3AED',
                 pointBorderWidth: 2,
                 pointRadius: 4,
                 pointHoverRadius: 6,
@@ -75,10 +75,10 @@ function initChart() {
             {
                 label: 'Qty Sold',
                 data: [0, 0, 0, 0, 0, 0, 0],
-                borderColor: '#16a34a',
+                borderColor: '#7C3AED',
                 borderWidth: 2,
                 pointBackgroundColor: '#fff',
-                pointBorderColor: '#16a34a',
+                pointBorderColor: '#7C3AED',
                 pointRadius: 0,
                 pointHoverRadius: 4,
                 borderDash: [5, 5],
@@ -164,10 +164,10 @@ async function fetchSummary() {
         if (el('total-stock')) el('total-stock').textContent = (data.total_stock || 0).toLocaleString() + ' units';
         if (el('stock-alerts')) {
             const alerts = [];
-            if (data.stock_value > 0) alerts.push(`<span class="text-[#15803d]"><i class="fa-solid fa-coins"></i> Rs ${(data.stock_value || 0).toLocaleString()} value</span>`);
-            if (data.out_of_stock_count > 0) alerts.push(`<span class="text-[#16a34a]"><i class="fa-solid fa-circle-exclamation"></i> ${data.out_of_stock_count} out of stock</span>`);
-            if (data.low_stock_count > 0) alerts.push(`<span class="text-[#16a34a]"><i class="fa-solid fa-triangle-exclamation"></i> ${data.low_stock_count} low stock</span>`);
-            if (alerts.length === 0) alerts.push('<span class="text-[#16a34a]"><i class="fa-solid fa-check-circle"></i> All stocked</span>');
+            if (data.stock_value > 0) alerts.push(`<span class="text-[#581C87]"><i class="fa-solid fa-coins"></i> Rs ${(data.stock_value || 0).toLocaleString()} value</span>`);
+            if (data.out_of_stock_count > 0) alerts.push(`<span class="text-[#7C3AED]"><i class="fa-solid fa-circle-exclamation"></i> ${data.out_of_stock_count} out of stock</span>`);
+            if (data.low_stock_count > 0) alerts.push(`<span class="text-[#7C3AED]"><i class="fa-solid fa-triangle-exclamation"></i> ${data.low_stock_count} low stock</span>`);
+            if (alerts.length === 0) alerts.push('<span class="text-[#7C3AED]"><i class="fa-solid fa-check-circle"></i> All stocked</span>');
             el('stock-alerts').innerHTML = alerts.join(' · ');
         }
     } catch (error) {
@@ -211,7 +211,7 @@ async function fetchTopProducts() {
         topProductsList.innerHTML = products.map((product, idx) => `
             <div class="flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-slate-50 transition group">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold group-hover:from-[#15803d] group-hover:to-[#16a34a] group-hover:text-white transition">
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold group-hover:from-[#581C87] group-hover:to-[#7C3AED] group-hover:text-white transition">
                         ${idx + 1}
                     </div>
                     <div>
@@ -219,7 +219,7 @@ async function fetchTopProducts() {
                         <p class="text-[11px] text-slate-400">${(product.total_quantity_sold || product.total_units_sold || 0).toLocaleString()} units sold</p>
                     </div>
                 </div>
-                <p class="font-bold text-sm text-[#15803d]">Rs ${(product.total_revenue || 0).toLocaleString()}</p>
+                <p class="font-bold text-sm text-[#581C87]">Rs ${(product.total_revenue || 0).toLocaleString()}</p>
             </div>
         `).join('');
     } catch (error) {
@@ -262,7 +262,7 @@ function renderProducts(products) {
             <td class="py-4 px-6 text-gray-500">${product.category || product.category_name || ''}</td>
             <td class="py-4 px-6 text-gray-800">Rs ${(product.selling_price || product.price || 0).toLocaleString()}</td>
             <td class="py-4 px-6">
-                <span class="${(product.stock_quantity || product.quantity || 0) === 0 ? 'text-[#16a34a]' : (product.stock_quantity || product.quantity || 0) <= 10 ? 'text-[#16a34a]' : 'text-[#15803d]'} font-medium">
+                <span class="${(product.stock_quantity || product.quantity || 0) === 0 ? 'text-[#7C3AED]' : (product.stock_quantity || product.quantity || 0) <= 10 ? 'text-[#7C3AED]' : 'text-[#581C87]'} font-medium">
                     ${(product.stock_quantity || product.quantity || 0).toLocaleString()}
                 </span>
             </td>
@@ -313,10 +313,10 @@ async function fetchRecentSales() {
 
             return `
                 <tr class="hover:bg-slate-50 transition group">
-                    <td class="py-4 px-6 font-semibold text-[#16a34a]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
+                    <td class="py-4 px-6 font-semibold text-[#7C3AED]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
                     <td class="py-4 px-6">
                         <div class="flex items-center gap-3">
-                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-[#15803d] to-[#16a34a] text-amber-400 flex items-center justify-center text-xs font-bold">${initials}</div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-[#581C87] to-[#7C3AED] text-pink-400 flex items-center justify-center text-xs font-bold">${initials}</div>
                             <span class="font-medium text-slate-800">${productName}</span>
                         </div>
                     </td>
@@ -329,7 +329,7 @@ async function fetchRecentSales() {
                         </span>
                     </td>
                     <td class="py-4 px-6 text-right">
-                        <button class="text-slate-400 hover:text-[#15803d] p-1 rounded-lg hover:bg-slate-100 transition"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <button class="text-slate-400 hover:text-[#581C87] p-1 rounded-lg hover:bg-slate-100 transition"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                     </td>
                 </tr>
             `;

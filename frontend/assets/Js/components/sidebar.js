@@ -99,15 +99,15 @@ function createSidebar(activePage = '') {
         <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
 
         <!-- SIDEBAR -->
-        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none" style="background: linear-gradient(180deg, #15803d 0%, #15803d 40%, #16a34a 70%, #15803d 100%);">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none" style="background: linear-gradient(180deg, #3B0764 0%, #581C87 30%, #7C3AED 60%, #9333EA 80%, #581C87 100%);">
             
             <!-- Logo -->
             <div class="p-6 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                    <div class="bg-gradient-to-br from-amber-400 to-amber-500 text-[#15803d] h-10 w-10 flex items-center justify-center rounded-lg font-bold text-lg shadow-md" id="sidebarInitials">...</div>
+                    <div class="bg-gradient-to-br from-pink-400 to-pink-500 text-[#581C87] h-10 w-10 flex items-center justify-center rounded-lg font-bold text-lg shadow-md" id="sidebarInitials">...</div>
                     <div>
                         <h1 class="text-lg font-bold text-white tracking-tight" id="sidebarBusinessName">Loading...</h1>
-                        <p class="text-[10px] text-amber-400/70 font-medium uppercase tracking-wider">"साझा समाधान, सजिलो व्यापार"</p>
+                        <p class="text-[10px] text-pink-400/70 font-medium uppercase tracking-wider">"साझा समाधान, सजिलो व्यापार"</p>
                     </div>
                 </div>
             </div>
@@ -346,13 +346,13 @@ function getSidebarStyles() {
             align-items: center;
         }
         .sidebar-link:hover {
-            background: linear-gradient(90deg, #16a34a 0%, #16a34a 100%);
+            background: linear-gradient(90deg, #7C3AED 0%, #7C3AED 100%);
             color: #fff !important;
             box-shadow: 0 4px 6px -1px rgba(30, 58, 95, 0.4);
             transform: translateX(4px);
         }
         .sidebar-link.active {
-            background: linear-gradient(90deg, #16a34a 0%, #16a34a 100%);
+            background: linear-gradient(90deg, #7C3AED 0%, #7C3AED 100%);
             color: #fff !important;
             box-shadow: 0 4px 6px -1px rgba(30, 58, 95, 0.4);
         }
@@ -378,7 +378,7 @@ function getSidebarStyles() {
             -webkit-tap-highlight-color: transparent;
         }
         .bottom-nav-item.active {
-            color: #16a34a;
+            color: #7C3AED;
         }
         .bottom-nav-item.active i {
             transform: scale(1.1);

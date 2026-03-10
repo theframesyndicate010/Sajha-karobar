@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>sajha karobar - Sign Up</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#15803d">
+  <meta name="theme-color" content="#581C87">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,21 +17,21 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#16a34a',600:'#15803d',700:'#14532d',800:'#052e16',900:'#022c22'}}}}}</script>
+  <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#faf5ff',100:'#f3e8ff',200:'#e9d5ff',300:'#d8b4fe',400:'#c084fc',500:'#a855f7',600:'#7c3aed',700:'#6d28d9',800:'#581c87',900:'#3b0764'}}}}}</script>
 
   <style>
     body { font-family: 'Inter', sans-serif; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-[#15803d] via-[#166534] to-[#14532d] min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-br from-[#581C87] via-[#7C3AED] to-[#DB2777] min-h-screen flex items-center justify-center">
 
 <div class="w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
 
   <!-- LEFT -->
-  <div class="p-8 flex flex-col justify-center" style="background: linear-gradient(160deg, #15803d 0%, #16a34a 50%, #15803d 100%);">
+  <div class="p-8 flex flex-col justify-center" style="background: linear-gradient(160deg, #3B0764 0%, #7C3AED 40%, #DB2777 100%);">
     <h1 class="text-3xl font-bold text-white">sajha karobar</h1>
-    <p class="text-amber-400/70 mt-2">Create your account to get started</p>
+    <p class="text-pink-400/70 mt-2">Create your account to get started</p>
   </div>
 
   <!-- RIGHT -->
@@ -47,50 +47,50 @@
       <div>
         <label class="text-sm font-medium text-gray-700">Full Name</label>
         <input type="text" id="name" required
-          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-400" />
+          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-400" />
       </div>
 
       <div>
         <label class="text-sm font-medium text-gray-700">Email</label>
         <input type="email" id="email" required
-          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-400" />
+          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-400" />
       </div>
 
       <div>
         <label class="text-sm font-medium text-gray-700">Password</label>
         <input type="password" id="password" required
-          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-400" />
+          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-400" />
       </div>
 
       <div>
         <label class="text-sm font-medium text-gray-700">Tenant Name</label>
         <input type="text" id="tenant" required
-          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-400"
+          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-400"
           placeholder="Company / Shop Name"/>
       </div>
 
       <div>
         <label class="text-sm font-medium text-gray-700">Select Shop Type:</label>
         <select id="shopType" required
-          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-400">
+          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-400">
           <option value="shoe">shoe</option>
           <option value="clothes">clothes</option>
         </select>
       </div>
 
-      <div id="error" class="hidden p-3 bg-green-100 text-[#16a34a] rounded-lg text-sm"></div>
+      <div id="error" class="hidden p-3 bg-purple-100 text-[#7C3AED] rounded-lg text-sm"></div>
 
       <!-- Privacy Policy Checkbox -->
       <div class="flex items-start gap-2">
-        <input type="checkbox" id="privacyCheck" class="w-4 h-4 accent-green-600 rounded mt-0.5" />
+        <input type="checkbox" id="privacyCheck" class="w-4 h-4 accent-violet-600 rounded mt-0.5" />
         <label for="privacyCheck" class="text-xs text-gray-600">
-          I agree to the <a href="#" onclick="document.getElementById('privacyModal').classList.remove('hidden'); return false;" class="text-green-600 hover:underline font-medium">Privacy Policy</a> and Terms of Service
+          I agree to the <a href="#" onclick="document.getElementById('privacyModal').classList.remove('hidden'); return false;" class="text-violet-600 hover:underline font-medium">Privacy Policy</a> and Terms of Service
         </label>
       </div>
 
       <button
         type="submit"
-        class="w-full bg-gradient-to-r from-[#15803d] to-[#16a34a] text-white py-3 rounded-lg font-semibold hover:scale-[1.02] transition">
+        class="w-full bg-gradient-to-r from-[#7C3AED] to-[#DB2777] text-white py-3 rounded-lg font-semibold hover:scale-[1.02] transition">
         Create Account
       </button>
 
@@ -98,7 +98,7 @@
 
     <p class="text-sm text-center text-gray-500 mt-6">
       Already have an account?
-      <a href="/login" class="text-green-600 font-semibold hover:underline">Login</a>
+      <a href="/login" class="text-violet-600 font-semibold hover:underline">Login</a>
     </p>
 
   </div>
@@ -108,7 +108,7 @@
 <div id="privacyModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
   <div class="absolute inset-0 bg-black bg-opacity-50" onclick="document.getElementById('privacyModal').classList.add('hidden')"></div>
   <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[85vh] flex flex-col overflow-hidden z-10">
-    <div class="bg-gradient-to-r from-[#15803d] to-[#16a34a] px-6 py-4 flex items-center justify-between">
+    <div class="bg-gradient-to-r from-[#7C3AED] to-[#DB2777] px-6 py-4 flex items-center justify-between">
       <h2 class="text-lg font-bold text-white">Privacy Policy</h2>
       <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="text-white hover:bg-white/20 p-1.5 rounded-lg transition">✕</button>
     </div>
@@ -134,10 +134,10 @@
       <p>You have the right to access, update, or delete your personal information at any time through your account settings. You may also request a copy of all data we hold about you.</p>
 
       <h3 class="font-semibold text-gray-900">7. Contact Us</h3>
-      <p>If you have questions about this privacy policy, please contact us at <span class="text-green-600 font-medium">support@sajhakarobar.com</span>.</p>
+      <p>If you have questions about this privacy policy, please contact us at <span class="text-violet-600 font-medium">support@sajhakarobar.com</span>.</p>
     </div>
     <div class="border-t border-gray-200 px-6 py-3 bg-gray-50">
-      <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="w-full bg-[#15803d] hover:bg-[#16a34a] text-white py-2.5 rounded-lg font-semibold transition text-sm">I Understand</button>
+      <button onclick="document.getElementById('privacyModal').classList.add('hidden')" class="w-full bg-[#581C87] hover:bg-[#7C3AED] text-white py-2.5 rounded-lg font-semibold transition text-sm">I Understand</button>
     </div>
   </div>
 </div>

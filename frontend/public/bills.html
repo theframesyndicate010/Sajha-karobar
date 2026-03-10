@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>sajha karobar - Bills History</title>
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#15803d">
+    <meta name="theme-color" content="#581C87">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#16a34a',600:'#15803d',700:'#14532d',800:'#052e16',900:'#022c22'}}}}}</script>
+    <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#faf5ff',100:'#f3e8ff',200:'#e9d5ff',300:'#d8b4fe',400:'#c084fc',500:'#a855f7',600:'#7c3aed',700:'#6d28d9',800:'#581c87',900:'#3b0764'}}}}}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -40,7 +40,7 @@
 
 
         .active-bank-type {
-            background-color: #15803d;
+            background-color: #581C87;
             color: white;
             box-shadow: 0 2px 4px rgba(15, 23, 42, 0.3);
         }
@@ -74,7 +74,7 @@
         }
 
         #buyBillsBtn.active-bank-type {
-            background-color: #15803d;
+            background-color: #581C87;
             color: white;
             box-shadow: 0 2px 4px rgba(15, 23, 42, 0.3);
         }
@@ -92,7 +92,7 @@
         <header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-4 lg:px-8 z-10">
             <!-- Left: Mobile Menu & Search -->
             <div class="flex items-center gap-4 flex-1">
-                <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-[#16a34a] p-1">
+                <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-[#7C3AED] p-1">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
                 
@@ -100,15 +100,15 @@
                     <span class="absolute left-3 top-2.5 text-gray-400">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <input type="text" placeholder="Search bills..." class="w-full bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-green-200 rounded-lg py-2 pl-10 pr-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-100">
+                    <input type="text" placeholder="Search bills..." class="w-full bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-purple-200 rounded-lg py-2 pl-10 pr-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-purple-100">
                 </div>
             </div>
 
             <!-- Right: Notifications & Profile -->
             <div class="flex items-center gap-4 lg:gap-6">
-                <button class="relative text-gray-400 hover:text-[#16a34a] transition p-2 rounded-full hover:bg-gray-50">
+                <button class="relative text-gray-400 hover:text-[#7C3AED] transition p-2 rounded-full hover:bg-gray-50">
                     <i class="fa-regular fa-bell text-xl"></i>
-                    <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-amber-400 rounded-full border-2 border-white"></span>
+                    <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-pink-400 rounded-full border-2 border-white"></span>
                 </button>
                 
                 <div class="h-8 w-px bg-gray-200 hidden sm:block"></div>
@@ -117,7 +117,7 @@
                     <div class="text-right hidden sm:block">
                         <p id="headerUserName" class="text-sm font-bold text-gray-800 leading-none">Loading...</p>
                     </div>
-                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 text-amber-400 border border-slate-600 flex items-center justify-center font-bold shadow-sm">
+                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 text-pink-400 border border-slate-600 flex items-center justify-center font-bold shadow-sm">
                         ?
                     </div>
                 </div>
@@ -150,19 +150,19 @@
                         <!-- Row 1: Inputs -->
                         <div class="flex gap-2 items-center mb-2">
                             <input type="text" id="searchRetailer" placeholder="Retailer..." 
-                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-violet-500 focus:border-transparent">
                             <input type="date" id="filterDate" 
-                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-violet-500 focus:border-transparent">
                         </div>
                         <!-- Row 2: Select + Search -->
                         <div class="flex gap-2 items-center mb-2">
                             <select id="filterPaymentType" 
-                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                class="flex-1 min-w-0 px-2 py-1.5 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-violet-500 focus:border-transparent">
                                 <option value="">All Types</option>
                                 <option value="full">Full Payment</option>
                                 <option value="partial">Partial Payment</option>
                             </select>
-                            <button onclick="filterBills()" class="flex-1 bg-[#15803d] hover:bg-[#16a34a] text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                            <button onclick="filterBills()" class="flex-1 bg-[#581C87] hover:bg-[#7C3AED] text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 🔍 Search
                             </button>
                         </div>
@@ -171,10 +171,10 @@
                             <button onclick="resetFilters()" class="flex-1 bg-gray-400 hover:bg-gray-500 text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 ↻ Reset
                             </button>
-                            <button onclick="exportToCSV()" class="flex-1 bg-[#15803d] hover:bg-[#16a34a] text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                            <button onclick="exportToCSV()" class="flex-1 bg-[#581C87] hover:bg-[#7C3AED] text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 📥 CSV
                             </button>
-                            <button onclick="deleteAllBills()" class="flex-1 bg-[#15803d] hover:bg-[#16a34a] text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
+                            <button onclick="deleteAllBills()" class="flex-1 bg-[#581C87] hover:bg-[#7C3AED] text-white text-xs font-semibold py-1.5 px-3 rounded-md transition">
                                 🗑️ Delete
                             </button>
                         </div>
@@ -185,7 +185,7 @@
                         <div id="billsContainer" class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="border-b border-slate-700" style="background: linear-gradient(90deg, #15803d 0%, #16a34a 50%, #15803d 100%);">
+                                    <tr class="border-b border-slate-700" style="background: linear-gradient(90deg, #3B0764 0%, #7C3AED 40%, #DB2777 100%);">
                                         <th class="px-6 py-3 text-left text-sm font-semibold text-white">Bill Title</th>
                                         <th class="px-6 py-3 text-left text-sm font-semibold text-white">Retailer</th>
                                         <th class="px-6 py-3 text-center text-sm font-semibold text-white">Date</th>
@@ -211,19 +211,19 @@
                     <div class="flex flex-wrap gap-2 mt-6">
                         <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
                             <p class="text-gray-600 text-[10px] font-medium">Total Bills</p>
-                            <p class="text-lg font-bold text-[#16a34a]" id="totalBills">0</p>
+                            <p class="text-lg font-bold text-[#7C3AED]" id="totalBills">0</p>
                         </div>
                         <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
                             <p class="text-gray-600 text-[10px] font-medium">Total Revenue</p>
-                            <p class="text-lg font-bold text-[#16a34a]" id="totalRevenue">Rs 0.00</p>
+                            <p class="text-lg font-bold text-[#7C3AED]" id="totalRevenue">Rs 0.00</p>
                         </div>
                         <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
                             <p class="text-gray-600 text-[10px] font-medium">Paid Amount</p>
-                            <p class="text-lg font-bold text-[#16a34a]" id="totalPaid">Rs 0.00</p>
+                            <p class="text-lg font-bold text-[#7C3AED]" id="totalPaid">Rs 0.00</p>
                         </div>
                         <div class="bg-white rounded-md shadow-sm border border-gray-200 px-3 py-2 flex-1 min-w-max">
                             <p class="text-gray-600 text-[10px] font-medium">Pending Balance</p>
-                            <p class="text-lg font-bold text-[#16a34a]" id="totalBalance">Rs 0.00</p>
+                            <p class="text-lg font-bold text-[#7C3AED]" id="totalBalance">Rs 0.00</p>
                         </div>
                     </div>
         </div>
@@ -239,7 +239,7 @@
                 <!-- Details will be populated by JavaScript -->
             </div>
             <div class="p-6 border-t flex gap-2 justify-end">
-                <button id="modalActionBtn" onclick="handleModalAction()" class="bg-[#15803d] hover:bg-[#16a34a] text-white font-semibold py-2 px-4 rounded-lg transition">
+                <button id="modalActionBtn" onclick="handleModalAction()" class="bg-[#581C87] hover:bg-[#7C3AED] text-white font-semibold py-2 px-4 rounded-lg transition">
                     🖨️ Print
                 </button>
                 <button onclick="closeBillModal()" class="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg transition">

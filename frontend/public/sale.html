@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>sajha karobar - Sales Management</title>
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#15803d">
+    <meta name="theme-color" content="#581C87">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,7 +17,7 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#16a34a',600:'#15803d',700:'#14532d',800:'#052e16',900:'#022c22'}}}}}</script>
+    <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#faf5ff',100:'#f3e8ff',200:'#e9d5ff',300:'#d8b4fe',400:'#c084fc',500:'#a855f7',600:'#7c3aed',700:'#6d28d9',800:'#581c87',900:'#3b0764'}}}}}</script>
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -156,7 +156,7 @@
         <header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-4 lg:px-8 z-10">
             <!-- Left: Mobile Menu & Search -->
             <div class="flex items-center gap-4 flex-1">
-                <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-[#16a34a] p-1">
+                <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-[#7C3AED] p-1">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
                 
@@ -164,15 +164,15 @@
                     <span class="absolute left-3 top-2.5 text-gray-400">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <input type="text" placeholder="Search items, bills, or customers..." class="w-full bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-green-200 rounded-lg py-2 pl-10 pr-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-100">
+                    <input type="text" placeholder="Search items, bills, or customers..." class="w-full bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-purple-200 rounded-lg py-2 pl-10 pr-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-purple-100">
                 </div>
             </div>
 
             <!-- Right: Notifications & Profile -->
             <div class="flex items-center gap-4 lg:gap-6">
-                <button class="relative text-gray-400 hover:text-[#16a34a] transition p-2 rounded-full hover:bg-gray-50">
+                <button class="relative text-gray-400 hover:text-[#7C3AED] transition p-2 rounded-full hover:bg-gray-50">
                     <i class="fa-regular fa-bell text-xl"></i>
-                    <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-amber-400 rounded-full border-2 border-white"></span>
+                    <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-pink-400 rounded-full border-2 border-white"></span>
                 </button>
                 
                 <div class="h-8 w-px bg-gray-200 hidden sm:block"></div>
@@ -181,7 +181,7 @@
                     <div class="text-right hidden sm:block">
                         <p id="headerUserName" class="text-sm font-bold text-gray-800 leading-none">Loading...</p>
                     </div>
-                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 text-amber-400 border border-slate-600 flex items-center justify-center font-bold shadow-sm">
+                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 text-pink-400 border border-slate-600 flex items-center justify-center font-bold shadow-sm">
                         ?
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                     <p class="text-gray-500 text-sm mt-1">Track and manage all sales transactions.</p>
                 </div>
                 <div class="flex gap-3">
-                    <button id="newSaleBtn" class="bg-[#15803d] hover:bg-[#16a34a] text-white px-5 py-2 rounded-lg font-medium shadow-md shadow-slate-400/20 flex items-center gap-2 transition active:scale-95">
+                    <button id="newSaleBtn" class="bg-[#581C87] hover:bg-[#7C3AED] text-white px-5 py-2 rounded-lg font-medium shadow-md shadow-slate-400/20 flex items-center gap-2 transition active:scale-95">
                         <i class="fa-solid fa-plus"></i> New Sale
                     </button>
                 </div>
@@ -208,7 +208,7 @@
             <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-1 lg:gap-3 mb-4 lg:mb-6">
                 <!-- Total Sales Card -->
                 <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#16a34a] text-sm lg:text-base mb-0.5">
+                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#7C3AED] text-sm lg:text-base mb-0.5">
                         <i class="fa-solid fa-wallet"></i>
                     </div>
                     <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Sales</p>
@@ -218,7 +218,7 @@
 
                 <!-- Today's Sales Card -->
                 <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#16a34a] text-sm lg:text-base mb-0.5">
+                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#7C3AED] text-sm lg:text-base mb-0.5">
                         <i class="fa-solid fa-sack-dollar"></i>
                     </div>
                     <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Today</p>
@@ -228,7 +228,7 @@
 
                 <!-- Avg Sale Value Card -->
                 <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#16a34a] text-sm lg:text-base mb-0.5">
+                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#7C3AED] text-sm lg:text-base mb-0.5">
                         <i class="fa-solid fa-chart-bar"></i>
                     </div>
                     <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Avg</p>
@@ -238,7 +238,7 @@
 
                 <!-- Transactions Card -->
                 <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#16a34a] text-sm lg:text-base mb-0.5">
+                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#7C3AED] text-sm lg:text-base mb-0.5">
                         <i class="fa-solid fa-receipt"></i>
                     </div>
                     <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Trans</p>
@@ -255,8 +255,8 @@
                         <p class="text-xs text-gray-500">Latest sales records</p>
                     </div>
                     <div class="flex gap-1 lg:gap-2 items-center">
-                        <input type="text" id="sale-search" placeholder="Search sale ID or customer..." class="flex-1 min-w-0 bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-green-200 rounded-lg py-1.5 lg:py-2 px-2 lg:px-4 text-[10px] lg:text-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-100">
-                        <select id="date-filter" class="text-[10px] lg:text-xs border border-gray-200 bg-gray-50 rounded-lg px-1.5 lg:px-3 py-1.5 lg:py-2 outline-none focus:ring-1 focus:ring-green-200 cursor-pointer">
+                        <input type="text" id="sale-search" placeholder="Search sale ID or customer..." class="flex-1 min-w-0 bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-purple-200 rounded-lg py-1.5 lg:py-2 px-2 lg:px-4 text-[10px] lg:text-sm transition-all focus:outline-none focus:ring-2 focus:ring-purple-100">
+                        <select id="date-filter" class="text-[10px] lg:text-xs border border-gray-200 bg-gray-50 rounded-lg px-1.5 lg:px-3 py-1.5 lg:py-2 outline-none focus:ring-1 focus:ring-purple-200 cursor-pointer">
                             <option value="">All Dates</option>
                             <option value="today">Today</option>
                             <option value="week">This Week</option>
@@ -271,7 +271,7 @@
                 <div class="overflow-x-auto">
                     <table id="sale-table" class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="text-white text-xs uppercase tracking-wider" style="background: linear-gradient(90deg, #15803d 0%, #16a34a 50%, #15803d 100%);">
+                            <tr class="text-white text-xs uppercase tracking-wider" style="background: linear-gradient(90deg, #3B0764 0%, #7C3AED 40%, #DB2777 100%);">
                                 <th class="py-4 px-6 font-semibold">Sale ID</th>
                                 <th class="py-4 px-6 font-semibold">Customer</th>
                                 <th class="py-4 px-6 font-semibold">Items</th>
@@ -296,7 +296,7 @@
         <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeSaleModal()"></div>
         <div class="absolute inset-4 lg:inset-auto lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-full lg:max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-[#15803d] to-[#16a34a] px-6 py-4 flex items-center justify-between">
+            <div class="bg-gradient-to-r from-[#7C3AED] to-[#DB2777] px-6 py-4 flex items-center justify-between">
                 <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-cart-plus mr-2"></i> New Sale</h3>
                 <button onclick="closeSaleModal()" class="text-white hover:bg-white/20 p-2 rounded-lg transition">
                     <i class="fa-solid fa-xmark text-xl"></i>
@@ -312,11 +312,11 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Customer Name</label>
-                                <input type="text" id="customerName" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-100 focus:border-green-300 outline-none transition" placeholder="Enter customer name">
+                                <input type="text" id="customerName" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-100 focus:border-purple-300 outline-none transition" placeholder="Enter customer name">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number <span class="text-gray-400 text-xs">(Optional)</span></label>
-                                <input type="tel" id="customerPhone" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-100 focus:border-green-300 outline-none transition" placeholder="Enter phone number">
+                                <input type="tel" id="customerPhone" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-100 focus:border-purple-300 outline-none transition" placeholder="Enter phone number">
                             </div>
                         </div>
                     </div>
@@ -328,7 +328,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
                                 <div class="md:col-span-5">
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Select Product</label>
-                                    <select id="productSelect" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-100 focus:border-green-300 outline-none transition bg-white">
+                                    <select id="productSelect" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-100 focus:border-purple-300 outline-none transition bg-white">
                                         <option value="">-- Select a product --</option>
                                     </select>
                                 </div>
@@ -338,7 +338,7 @@
                                 </div>
                                 <div class="md:col-span-2">
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
-                                    <input type="number" id="productQty" min="1" value="1" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-100 focus:border-green-300 outline-none transition">
+                                    <input type="number" id="productQty" min="1" value="1" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-100 focus:border-purple-300 outline-none transition">
                                 </div>
                                 <div class="md:col-span-3">
                                     <button type="button" onclick="addProductToSale()" class="w-full bg-gray-800 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg font-medium transition flex items-center justify-center gap-2">
@@ -354,7 +354,7 @@
                         <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Sale Items</h4>
                         <div class="border border-gray-200 rounded-xl overflow-x-auto">
                             <table class="w-full">
-                                <thead class="bg-[#16a34a]">
+                                <thead class="bg-[#7C3AED]">
                                     <tr class="text-xs text-white uppercase tracking-wider">
                                         <th class="py-3 px-4 text-left font-semibold">Product</th>
                                         <th class="py-3 px-4 text-center font-semibold">Price</th>
@@ -383,29 +383,29 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <label class="cursor-pointer">
                                     <input type="radio" name="paymentMethod" value="cash" class="hidden peer" checked>
-                                    <div class="border-2 border-gray-200 peer-checked:border-[#16a34a] peer-checked:bg-green-50 rounded-xl p-4 text-center transition">
-                                        <i class="fa-solid fa-money-bill-wave text-2xl text-[#16a34a] mb-2"></i>
+                                    <div class="border-2 border-gray-200 peer-checked:border-[#7C3AED] peer-checked:bg-purple-50 rounded-xl p-4 text-center transition">
+                                        <i class="fa-solid fa-money-bill-wave text-2xl text-[#7C3AED] mb-2"></i>
                                         <p class="font-medium text-gray-700">Cash</p>
                                     </div>
                                 </label>
                                 <label class="cursor-pointer">
                                     <input type="radio" name="paymentMethod" value="card" class="hidden peer">
-                                    <div class="border-2 border-gray-200 peer-checked:border-[#16a34a] peer-checked:bg-green-50 rounded-xl p-4 text-center transition">
-                                        <i class="fa-solid fa-credit-card text-2xl text-[#16a34a] mb-2"></i>
+                                    <div class="border-2 border-gray-200 peer-checked:border-[#7C3AED] peer-checked:bg-purple-50 rounded-xl p-4 text-center transition">
+                                        <i class="fa-solid fa-credit-card text-2xl text-[#7C3AED] mb-2"></i>
                                         <p class="font-medium text-gray-700">Card</p>
                                     </div>
                                 </label>
                                 <label class="cursor-pointer">
                                     <input type="radio" name="paymentMethod" value="upi" class="hidden peer">
-                                    <div class="border-2 border-gray-200 peer-checked:border-[#16a34a] peer-checked:bg-green-50 rounded-xl p-4 text-center transition">
-                                        <i class="fa-solid fa-mobile-screen text-2xl text-[#16a34a] mb-2"></i>
+                                    <div class="border-2 border-gray-200 peer-checked:border-[#7C3AED] peer-checked:bg-purple-50 rounded-xl p-4 text-center transition">
+                                        <i class="fa-solid fa-mobile-screen text-2xl text-[#7C3AED] mb-2"></i>
                                         <p class="font-medium text-gray-700">UPI</p>
                                     </div>
                                 </label>
                                 <label class="cursor-pointer">
                                     <input type="radio" name="paymentMethod" value="credit" class="hidden peer">
-                                    <div class="border-2 border-gray-200 peer-checked:border-[#16a34a] peer-checked:bg-green-50 rounded-xl p-4 text-center transition">
-                                        <i class="fa-solid fa-receipt text-2xl text-[#16a34a] mb-2"></i>
+                                    <div class="border-2 border-gray-200 peer-checked:border-[#7C3AED] peer-checked:bg-purple-50 rounded-xl p-4 text-center transition">
+                                        <i class="fa-solid fa-receipt text-2xl text-[#7C3AED] mb-2"></i>
                                         <p class="font-medium text-gray-700">Credit</p>
                                     </div>
                                 </label>
@@ -423,14 +423,14 @@
                                 <div class="flex justify-between items-center mb-2">
                                     <span class="text-gray-600">Discount</span>
                                     <div class="flex items-center gap-2">
-                                        <input type="number" id="discountInput" min="0" value="0" class="w-20 border border-gray-300 rounded-lg px-2 py-1 text-sm text-right focus:ring-2 focus:ring-green-100 focus:border-green-300 outline-none" onchange="calculateTotal()">
+                                        <input type="number" id="discountInput" min="0" value="0" class="w-20 border border-gray-300 rounded-lg px-2 py-1 text-sm text-right focus:ring-2 focus:ring-purple-100 focus:border-purple-300 outline-none" onchange="calculateTotal()">
                                         <span class="text-gray-500">Rs</span>
                                     </div>
                                 </div>
                                 <div class="border-t border-gray-200 my-3"></div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-lg font-bold text-gray-800">Grand Total</span>
-                                    <span id="grandTotal" class="text-xl font-bold text-[#16a34a]">Rs 0</span>
+                                    <span id="grandTotal" class="text-xl font-bold text-[#7C3AED]">Rs 0</span>
                                 </div>
                             </div>
                         </div>
@@ -439,7 +439,7 @@
                     <!-- Notes -->
                     <div class="mt-6">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Notes <span class="text-gray-400 text-xs">(Optional)</span></label>
-                        <textarea id="saleNotes" rows="2" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-100 focus:border-green-300 outline-none transition resize-none" placeholder="Add any notes for this sale..."></textarea>
+                        <textarea id="saleNotes" rows="2" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-100 focus:border-purple-300 outline-none transition resize-none" placeholder="Add any notes for this sale..."></textarea>
                     </div>
                 </form>
             </div>
@@ -449,7 +449,7 @@
                 <button onclick="closeSaleModal()" class="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-100 transition">
                     Cancel
                 </button>
-                <button onclick="saveSale()" class="px-6 py-2.5 bg-[#15803d] hover:bg-[#16a34a] text-white rounded-lg font-medium shadow-md shadow-slate-400/20 transition flex items-center justify-center gap-2">
+                <button onclick="saveSale()" class="px-6 py-2.5 bg-[#581C87] hover:bg-[#7C3AED] text-white rounded-lg font-medium shadow-md shadow-slate-400/20 transition flex items-center justify-center gap-2">
                     <i class="fa-solid fa-check"></i> Complete Sale
                 </button>
             </div>

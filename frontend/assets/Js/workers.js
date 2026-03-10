@@ -125,7 +125,7 @@ function renderWorkers() {
             <tr class="hover:bg-gray-50 transition">
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
-                        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-[#16a34a] to-[#16a34a] flex items-center justify-center text-white font-bold text-sm">
+                        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#7C3AED] flex items-center justify-center text-white font-bold text-sm">
                             ${initials}
                         </div>
                         <div>
@@ -148,13 +148,13 @@ function renderWorkers() {
                         <button onclick="viewWorker('${worker.id}')" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition" title="View Details">
                             <i class="fa-solid fa-eye"></i>
                         </button>
-                        <button onclick="editWorker('${worker.id}')" class="p-2 text-[#16a34a] hover:bg-slate-50 rounded-lg transition" title="Edit">
+                        <button onclick="editWorker('${worker.id}')" class="p-2 text-[#7C3AED] hover:bg-slate-50 rounded-lg transition" title="Edit">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button onclick="openPayModal('${worker.id}')" class="p-2 text-[#16a34a] hover:bg-slate-50 rounded-lg transition" title="Pay Salary">
+                        <button onclick="openPayModal('${worker.id}')" class="p-2 text-[#7C3AED] hover:bg-slate-50 rounded-lg transition" title="Pay Salary">
                             <i class="fa-solid fa-indian-rupee-sign"></i>
                         </button>
-                        <button onclick="deleteWorker('${worker.id}', '${escapeHtml(worker.name)}')" class="p-2 text-[#16a34a] hover:bg-slate-50 rounded-lg transition" title="Remove">
+                        <button onclick="deleteWorker('${worker.id}', '${escapeHtml(worker.name)}')" class="p-2 text-[#7C3AED] hover:bg-slate-50 rounded-lg transition" title="Remove">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
@@ -174,7 +174,7 @@ function showEmptyState() {
                     <i class="fa-solid fa-users-slash text-gray-300 text-5xl mb-4"></i>
                     <p class="text-gray-500 font-medium">No workers found</p>
                     <p class="text-gray-400 text-sm mt-1">Add your first worker to get started</p>
-                    <button onclick="openAddWorkerModal()" class="mt-4 inline-flex items-center gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white font-semibold py-2 px-4 rounded-lg transition">
+                    <button onclick="openAddWorkerModal()" class="mt-4 inline-flex items-center gap-2 bg-[#7C3AED] hover:bg-[#581C87] text-white font-semibold py-2 px-4 rounded-lg transition">
                         <i class="fa-solid fa-user-plus"></i> Add Worker
                     </button>
                 </div>
@@ -331,7 +331,7 @@ function viewWorker(workerId) {
 
     document.getElementById('viewWorkerContent').innerHTML = `
         <div class="flex items-center gap-4 mb-6">
-            <div class="h-20 w-20 rounded-full bg-gradient-to-br from-[#16a34a] to-[#16a34a] flex items-center justify-center text-white font-bold text-2xl">
+            <div class="h-20 w-20 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#7C3AED] flex items-center justify-center text-white font-bold text-2xl">
                 ${initials}
             </div>
             <div>
@@ -387,7 +387,7 @@ function viewWorker(workerId) {
                 </div>
                 <div class="bg-white rounded-lg p-4 text-center">
                     <p class="text-sm text-gray-500">Total Salary</p>
-                    <p class="text-xl font-bold text-[#16a34a]">₹${totalSalary.toLocaleString('en-IN')}</p>
+                    <p class="text-xl font-bold text-[#7C3AED]">₹${totalSalary.toLocaleString('en-IN')}</p>
                 </div>
                 <div class="bg-white rounded-lg p-4 text-center">
                     <p class="text-sm text-gray-500">Payment Cycle</p>

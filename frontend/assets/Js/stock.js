@@ -227,7 +227,7 @@ function renderProducts() {
                         <i class="fa-solid fa-box-open text-gray-300 text-5xl mb-4"></i>
                         <p class="text-gray-500 font-medium">No products found</p>
                         <p class="text-gray-400 text-sm mt-1">Try adjusting your filters or add new products</p>
-                        <button onclick="openAddModal()" class="mt-4 inline-flex items-center gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white font-semibold py-2 px-4 rounded-lg transition">
+                        <button onclick="openAddModal()" class="mt-4 inline-flex items-center gap-2 bg-[#7C3AED] hover:bg-[#581C87] text-white font-semibold py-2 px-4 rounded-lg transition">
                             <i class="fa-solid fa-plus"></i> Add Product
                         </button>
                     </div>
@@ -246,13 +246,13 @@ function renderProducts() {
         let rowClass = '';
         
         if (isOutOfStock) {
-            statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-[#15803d]">Out of Stock</span>`;
+            statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-[#581C87]">Out of Stock</span>`;
             rowClass = 'bg-slate-50';
         } else if (isLowStock) {
-            statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-[#15803d]">Low Stock</span>`;
+            statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-[#581C87]">Low Stock</span>`;
             rowClass = 'bg-slate-50';
         } else {
-            statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-[#15803d]">In Stock</span>`;
+            statusBadge = `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-[#581C87]">In Stock</span>`;
         }
 
         const sizeRange = product.min_size && product.max_size 
@@ -280,15 +280,15 @@ function renderProducts() {
                 <td class="px-6 py-4 text-center text-gray-700">${sizeRange}</td>
                 <td class="px-6 py-4 text-right font-semibold text-gray-800">₹${Number(product.price).toFixed(2)}</td>
                 <td class="px-6 py-4 text-center">
-                    <span class="font-semibold ${isOutOfStock ? 'text-[#16a34a]' : isLowStock ? 'text-[#16a34a]' : 'text-gray-800'}">${qty}</span>
+                    <span class="font-semibold ${isOutOfStock ? 'text-[#7C3AED]' : isLowStock ? 'text-[#7C3AED]' : 'text-gray-800'}">${qty}</span>
                 </td>
                 <td class="px-6 py-4 text-center">${statusBadge}</td>
                 <td class="px-6 py-4 text-center">
                     <div class="flex items-center justify-center gap-2">
-                        <button onclick="editProduct('${product.id}')" class="p-2 text-[#16a34a] hover:bg-slate-50 rounded-lg transition" title="Edit">
+                        <button onclick="editProduct('${product.id}')" class="p-2 text-[#7C3AED] hover:bg-slate-50 rounded-lg transition" title="Edit">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button onclick="deleteProduct('${product.id}', '${escapeHtml(product.name)}')" class="p-2 text-[#16a34a] hover:bg-slate-50 rounded-lg transition" title="Delete">
+                        <button onclick="deleteProduct('${product.id}', '${escapeHtml(product.name)}')" class="p-2 text-[#7C3AED] hover:bg-slate-50 rounded-lg transition" title="Delete">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
@@ -618,13 +618,13 @@ async function addProduct() {
 
 // Show message in add form
 function showAddMessage(messageDiv, message, type) {
-    messageDiv.classList.remove('hidden', 'bg-slate-50', 'border-slate-300', 'text-[#15803d]');
+    messageDiv.classList.remove('hidden', 'bg-slate-50', 'border-slate-300', 'text-[#581C87]');
     
     if (type === 'success') {
-        messageDiv.className = 'bg-slate-50 border border-slate-300 text-[#15803d] px-4 py-3 rounded-lg text-sm';
+        messageDiv.className = 'bg-slate-50 border border-slate-300 text-[#581C87] px-4 py-3 rounded-lg text-sm';
         messageDiv.innerHTML = '<i class="fa-solid fa-check-circle mr-2"></i>' + message;
     } else {
-        messageDiv.className = 'bg-slate-50 border border-slate-300 text-[#15803d] px-4 py-3 rounded-lg text-sm';
+        messageDiv.className = 'bg-slate-50 border border-slate-300 text-[#581C87] px-4 py-3 rounded-lg text-sm';
         messageDiv.innerHTML = '<i class="fa-solid fa-exclamation-circle mr-2"></i>' + message;
     }
 }
