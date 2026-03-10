@@ -99,15 +99,15 @@ function createSidebar(activePage = '') {
         <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
 
         <!-- SIDEBAR -->
-        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none" style="background: #7C3AED;">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none" style="background: #0F766E;">
             
             <!-- Logo -->
             <div class="p-6 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                    <div class="bg-[#7C3AED] text-[#581C87] h-10 w-10 flex items-center justify-center rounded-lg font-bold text-lg shadow-md" id="sidebarInitials">...</div>
+                    <div class="bg-[#0F766E] text-[#134E4A] h-10 w-10 flex items-center justify-center rounded-lg font-bold text-lg shadow-md" id="sidebarInitials">...</div>
                     <div>
                         <h1 class="text-lg font-bold text-white tracking-tight" id="sidebarBusinessName">Loading...</h1>
-                        <p class="text-[10px] text-pink-400/70 font-medium uppercase tracking-wider">"साझा समाधान, सजिलो व्यापार"</p>
+                        <p class="text-[10px] text-orange-400/70 font-medium uppercase tracking-wider">"साझा समाधान, सजिलो व्यापार"</p>
                     </div>
                 </div>
             </div>
@@ -346,13 +346,13 @@ function getSidebarStyles() {
             align-items: center;
         }
         .sidebar-link:hover {
-            background: #7C3AED;
+            background: #0F766E;
             color: #fff !important;
             box-shadow: 0 4px 6px -1px rgba(30, 58, 95, 0.4);
             transform: translateX(4px);
         }
         .sidebar-link.active {
-            background: #7C3AED;
+            background: #0F766E;
             color: #fff !important;
             box-shadow: 0 4px 6px -1px rgba(30, 58, 95, 0.4);
         }
@@ -378,7 +378,7 @@ function getSidebarStyles() {
             -webkit-tap-highlight-color: transparent;
         }
         .bottom-nav-item.active {
-            color: #7C3AED;
+            color: #0F766E;
         }
         .bottom-nav-item.active i {
             transform: scale(1.1);

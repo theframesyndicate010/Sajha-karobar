@@ -169,7 +169,7 @@ function switchBillMode(mode) {
             buyBtn.classList.remove('active-mode');
             const icon = document.querySelector('#retailerSection h3 i');
             if (icon) {
-                icon.className = 'fa-solid fa-user-tie text-[#7C3AED]';
+                icon.className = 'fa-solid fa-user-tie text-[#0F766E]';
             }
             document.getElementById('partyLabel').textContent = 'Retailer';
             document.getElementById('partyNameLabel').textContent = 'Retailer';
@@ -179,7 +179,7 @@ function switchBillMode(mode) {
             sellBtn.classList.remove('active-mode');
             const icon = document.querySelector('#retailerSection h3 i');
             if (icon) {
-                icon.className = 'fa-solid fa-user-tie text-[#7C3AED]';
+                icon.className = 'fa-solid fa-user-tie text-[#0F766E]';
             }
             document.getElementById('partyLabel').textContent = 'Supplier/Vendor';
             document.getElementById('partyNameLabel').textContent = 'Supplier/Vendor';
@@ -308,7 +308,7 @@ function renderItems() {
                         ${item.numOfSets ? item.numOfSets + ' sets' : ''} ${sizeInfo} = ${item.quantity} qty × Rs ${item.unitPrice.toFixed(2)} = <span class="font-bold text-gray-800">Rs ${item.total.toFixed(2)}</span>
                     </p>
                 </div>
-                <button onclick="removeItem(${item.id})" class="text-[#7C3AED] hover:text-[#581C87] hover:bg-slate-50 p-1 rounded transition flex-shrink-0">
+                <button onclick="removeItem(${item.id})" class="text-[#0F766E] hover:text-[#134E4A] hover:bg-slate-50 p-1 rounded transition flex-shrink-0">
                     <i class="fa-solid fa-trash text-xs"></i>
                 </button>
             </div>
@@ -552,17 +552,17 @@ async function printBill() {
             <style>
                 body { font-family: Arial, sans-serif; margin: 20px; }
                 .header { text-align: center; margin-bottom: 20px; }
-                h1 { margin: 0; color: #7C3AED; }
+                h1 { margin: 0; color: #0F766E; }
                 .bill-info { margin-bottom: 20px; }
                 .bill-info p { margin: 5px 0; }
                 table { width: 100%; border-collapse: collapse; margin: 20px 0; }
                 .summary { float: right; width: 300px; margin-top: 20px; }
                 .summary p { display: flex; justify-content: space-between; margin: 8px 0; }
-                .total { font-weight: bold; font-size: 18px; color: #7C3AED; border-top: 2px solid #7C3AED; padding-top: 10px; }
+                .total { font-weight: bold; font-size: 18px; color: #0F766E; border-top: 2px solid #0F766E; padding-top: 10px; }
                 .payment-badge { 
                     display: inline-block; 
                     padding: 5px 10px; 
-                    background-color: ${paymentType === 'full' ? '#7C3AED' : '#7C3AED'}; 
+                    background-color: ${paymentType === 'full' ? '#0F766E' : '#0F766E'}; 
                     color: white; 
                     border-radius: 3px; 
                     margin: 5px 0;
