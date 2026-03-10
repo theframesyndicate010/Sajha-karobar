@@ -40,8 +40,8 @@
 
 
         .active-bank-type {
-            background-color: #134E4A;
-            color: white;
+            background-color: #134E4A !important;
+            color: white !important;
             box-shadow: 0 2px 4px rgba(15, 23, 42, 0.3);
         }
 
@@ -74,9 +74,14 @@
         }
 
         #buyBillsBtn.active-bank-type {
-            background-color: #134E4A;
-            color: white;
+            background-color: #134E4A !important;
+            color: white !important;
             box-shadow: 0 2px 4px rgba(15, 23, 42, 0.3);
+        }
+
+        #sellBillsBtn:not(.active-bank-type) {
+            background-color: transparent;
+            color: #666;
         }
     </style>
 </head>
