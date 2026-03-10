@@ -104,26 +104,26 @@ function renderBills(bills) {
             <td class="px-6 py-4 text-center text-gray-700">${bill.bill_date || 'N/A'}</td>
             <td class="px-6 py-4 text-right font-semibold text-gray-800">Rs ${(bill.total_amount || 0).toFixed(2)}</td>
             <td class="px-6 py-4 text-center">
-                <span class="px-3 py-1 rounded-full text-sm font-semibold ${bill.payment_type === 'full' ? 'bg-slate-100 text-[#0f172a]' : 'bg-slate-50 text-[#0f172a]'}">
+                <span class="px-3 py-1 rounded-full text-sm font-semibold ${bill.payment_type === 'full' ? 'bg-slate-100 text-[#1e40af]' : 'bg-slate-50 text-[#1e40af]'}">
                     ${bill.payment_type === 'full' ? 'Full' : 'Partial'}
                 </span>
             </td>
             <td class="px-6 py-4 text-right text-gray-700">Rs ${(bill.paid_amount || 0).toFixed(2)}</td>
-            <td class="px-6 py-4 text-right font-semibold ${(bill.remaining_balance || 0) > 0 ? 'text-[#1e3a5f]' : 'text-[#0f172a]'}">
+            <td class="px-6 py-4 text-right font-semibold ${(bill.remaining_balance || 0) > 0 ? 'text-[#2563eb]' : 'text-[#1e40af]'}">
                 Rs ${(bill.remaining_balance || 0).toFixed(2)}
             </td>
             <td class="px-6 py-4 text-center">
                 <div class="grid grid-cols-2 gap-1 w-32 mx-auto">
-                    <button onclick="viewBillDetails(${index})" class="bg-[#1e3a5f] hover:bg-[#0f172a] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
+                    <button onclick="viewBillDetails(${index})" class="bg-[#2563eb] hover:bg-[#1e40af] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
                         👁️ View
                     </button>
-                    <button onclick="editBillPayment(${index})" class="bg-[#1e3a5f] hover:bg-[#0f172a] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
+                    <button onclick="editBillPayment(${index})" class="bg-[#2563eb] hover:bg-[#1e40af] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
                         ✏️ Edit
                     </button>
-                    <button onclick="printBill(${index})" class="bg-[#1e3a5f] hover:bg-[#0f172a] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
+                    <button onclick="printBill(${index})" class="bg-[#2563eb] hover:bg-[#1e40af] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
                         🖨️ Print
                     </button>
-                    <button onclick="deleteBill(${index})" class="bg-[#1e3a5f] hover:bg-[#0f172a] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
+                    <button onclick="deleteBill(${index})" class="bg-[#2563eb] hover:bg-[#1e40af] text-white font-semibold py-0.5 px-1 rounded text-[10px] transition">
                         🗑️ Delete
                     </button>
                 </div>
@@ -255,7 +255,7 @@ async function viewBillDetails(index) {
                 </div>
                 <div class="border-t pt-2 col-span-2">
                     <p class="text-gray-600 text-sm">Total Amount</p>
-                    <p class="font-bold text-lg text-[#1e3a5f]">Rs ${(bill.total_amount || 0).toFixed(2)}</p>
+                    <p class="font-bold text-lg text-[#2563eb]">Rs ${(bill.total_amount || 0).toFixed(2)}</p>
                 </div>
             </div>
 
@@ -276,7 +276,7 @@ async function viewBillDetails(index) {
                 </div>
                 <div>
                     <p class="text-gray-600 text-sm">Remaining Balance</p>
-                    <p class="font-semibold ${(bill.remaining_balance || 0) > 0 ? 'text-[#1e3a5f]' : 'text-[#0f172a]'}">
+                    <p class="font-semibold ${(bill.remaining_balance || 0) > 0 ? 'text-[#2563eb]' : 'text-[#1e40af]'}">
                         Rs ${(bill.remaining_balance || 0).toFixed(2)}
                     </p>
                 </div>
@@ -292,7 +292,7 @@ async function viewBillDetails(index) {
                                 <p class="text-sm font-medium text-gray-700">Payment #${i + 1}</p>
                                 <p class="text-xs text-gray-500">Date: ${payment.payment_date || 'N/A'}</p>
                             </div>
-                            <p class="font-bold text-[#1e3a5f]">Rs ${(payment.payment_amount || 0).toFixed(2)}</p>
+                            <p class="font-bold text-[#2563eb]">Rs ${(payment.payment_amount || 0).toFixed(2)}</p>
                         </div>
                     `).join('')}
                 </div>
@@ -312,7 +312,7 @@ async function viewBillDetails(index) {
     
     const actionBtn = document.getElementById('modalActionBtn');
     actionBtn.textContent = '🖨️ Print';
-    actionBtn.className = 'bg-[#1e3a5f] hover:bg-[#0f172a] text-white font-semibold py-2 px-4 rounded-lg transition';
+    actionBtn.className = 'bg-[#2563eb] hover:bg-[#1e40af] text-white font-semibold py-2 px-4 rounded-lg transition';
     
     document.getElementById('billModal').classList.remove('hidden');
 }
@@ -402,7 +402,7 @@ async function printBillContent(bill) {
                 td { padding: 8px; }
                 .totals { float: right; width: 40%; margin-bottom: 20px; }
                 .totals p { margin: 5px 0; font-size: 14px; }
-                .payment-badge { display: inline-block; padding: 5px 10px; background-color: ${paymentType === 'full' ? '#1e3a5f' : '#2563eb'}; color: white; border-radius: 3px; margin: 5px 0; }
+                .payment-badge { display: inline-block; padding: 5px 10px; background-color: ${paymentType === 'full' ? '#2563eb' : '#2563eb'}; color: white; border-radius: 3px; margin: 5px 0; }
                 .footer { text-align: center; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 10px; font-size: 12px; }
             </style>
         </head>
@@ -447,7 +447,7 @@ async function printBillContent(bill) {
                 <p><strong>Discount (${bill.discount_percent || 0}%):</strong> Rs ${(bill.discount_amount || 0).toFixed(2)}</p>
                 <p style="border-top: 1px solid #ddd; padding-top: 5px;"><strong>Total:</strong> Rs ${(bill.total_amount || 0).toFixed(2)}</p>
                 <p><strong>Paid:</strong> Rs ${(bill.paid_amount || 0).toFixed(2)}</p>
-                ${(bill.remaining_balance || 0) > 0 ? `<p style="color: #1e3a5f;"><strong>Balance:</strong> Rs ${(bill.remaining_balance || 0).toFixed(2)}</p>` : `<p style="color: #1e3a5f;"><strong>Status:</strong> Fully Paid</p>`}
+                ${(bill.remaining_balance || 0) > 0 ? `<p style="color: #2563eb;"><strong>Balance:</strong> Rs ${(bill.remaining_balance || 0).toFixed(2)}</p>` : `<p style="color: #2563eb;"><strong>Status:</strong> Fully Paid</p>`}
             </div>
 
             <div style="clear: both;"></div>
@@ -570,7 +570,7 @@ function editBillPayment(index) {
                 <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg mb-4 border border-slate-300">
                     <div>
                         <p class="text-gray-600 text-sm">Current Pending Balance</p>
-                        <p class="font-bold text-lg text-[#1e3a5f]">Rs ${(bill.remaining_balance || 0).toFixed(2)}</p>
+                        <p class="font-bold text-lg text-[#2563eb]">Rs ${(bill.remaining_balance || 0).toFixed(2)}</p>
                     </div>
                     <div>
                         <p class="text-gray-600 text-sm">Total Bill Amount</p>
@@ -579,7 +579,7 @@ function editBillPayment(index) {
                 </div>
 
                 <div class="bg-slate-50 p-4 rounded-lg border border-slate-300 mb-4">
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Amount Given by Retailer (Rs) <span class="text-[#1e3a5f]">*</span></label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Amount Given by Retailer (Rs) <span class="text-[#2563eb]">*</span></label>
                     <input type="number" id="newPendingBalanceInput" min="0" step="0.01" placeholder="Enter payment received" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg" value="0.00">
                     <p class="text-xs text-gray-600 mt-2">Can set from 0 to Rs ${(bill.remaining_balance || 0).toFixed(2)}</p>
                 </div>
@@ -587,11 +587,11 @@ function editBillPayment(index) {
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-300">
                         <p class="text-sm font-semibold text-gray-700 mb-2">Amount to Reduce</p>
-                        <p class="font-bold text-xl text-[#1e3a5f]" id="reductionAmountDisplay">Rs 0.00</p>
+                        <p class="font-bold text-xl text-[#2563eb]" id="reductionAmountDisplay">Rs 0.00</p>
                     </div>
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-300">
                         <p class="text-sm font-semibold text-gray-700 mb-2">New Paid Amount</p>
-                        <p class="font-bold text-xl text-[#1e3a5f]" id="newPaidAmountDisplay">Rs ${(bill.paid_amount || 0).toFixed(2)}</p>
+                        <p class="font-bold text-xl text-[#2563eb]" id="newPaidAmountDisplay">Rs ${(bill.paid_amount || 0).toFixed(2)}</p>
                     </div>
                 </div>
             </div>
@@ -602,7 +602,7 @@ function editBillPayment(index) {
     
     const actionBtn = document.getElementById('modalActionBtn');
     actionBtn.textContent = '💾 Update Balance';
-    actionBtn.className = 'bg-[#1e3a5f] hover:bg-[#0f172a] text-white font-semibold py-2 px-4 rounded-lg transition';
+    actionBtn.className = 'bg-[#2563eb] hover:bg-[#1e40af] text-white font-semibold py-2 px-4 rounded-lg transition';
     
     setTimeout(() => {
         const newBalanceInput = document.getElementById('newPendingBalanceInput');

@@ -40,11 +40,11 @@ function updateProductCountButtons(activeCount) {
         if (count === activeCount) {
             btn.classList.add('active');
             btn.classList.remove('bg-gray-200', 'text-gray-700');
-            btn.classList.add('bg-[#1e3a5f]', 'text-white');
+            btn.classList.add('bg-[#2563eb]', 'text-white');
         } else {
             btn.classList.remove('active');
             btn.classList.add('bg-gray-200', 'text-gray-700');
-            btn.classList.remove('bg-[#1e3a5f]', 'text-white');
+            btn.classList.remove('bg-[#2563eb]', 'text-white');
         }
     });
     document.getElementById('customProductCount').value = activeCount;
@@ -60,14 +60,14 @@ function generateProductForms(count) {
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 max-w-2xl">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-lg font-bold text-gray-900">Product #${i}</h3>
-                    <span class="text-xs bg-slate-100 text-[#0f172a] px-3 py-1 rounded-full font-medium">Form ${i}/${count}</span>
+                    <span class="text-xs bg-slate-100 text-[#1e40af] px-3 py-1 rounded-full font-medium">Form ${i}/${count}</span>
                 </div>
                 <form class="addProductForm space-y-6">
                     
                     <!-- Product Name -->
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
-                            Product Name <span class="text-[#1e3a5f]">*</span>
+                            Product Name <span class="text-[#2563eb]">*</span>
                         </label>
                         <input 
                             type="text" 
@@ -81,7 +81,7 @@ function generateProductForms(count) {
                     <!-- Product Category -->
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
-                            Category Type <span class="text-[#1e3a5f]">*</span>
+                            Category Type <span class="text-[#2563eb]">*</span>
                         </label>
                         <select 
                             class="productCategory w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white"
@@ -95,7 +95,7 @@ function generateProductForms(count) {
                     <!-- Product Price -->
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
-                            Product Price (Rs) <span class="text-[#1e3a5f]">*</span>
+                            Product Price (Rs) <span class="text-[#2563eb]">*</span>
                         </label>
                         <input 
                             type="number" 
@@ -112,7 +112,7 @@ function generateProductForms(count) {
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Minimum Size <span class="text-[#1e3a5f]">*</span>
+                                Minimum Size <span class="text-[#2563eb]">*</span>
                             </label>
                             <input 
                                 type="number" 
@@ -126,7 +126,7 @@ function generateProductForms(count) {
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Maximum Size <span class="text-[#1e3a5f]">*</span>
+                                Maximum Size <span class="text-[#2563eb]">*</span>
                             </label>
                             <input 
                                 type="number" 
@@ -143,7 +143,7 @@ function generateProductForms(count) {
                     <!-- Set of Products -->
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
-                            Set of Products <span class="text-[#1e3a5f]">*</span>
+                            Set of Products <span class="text-[#2563eb]">*</span>
                         </label>
                         <input 
                             type="number" 
@@ -160,7 +160,7 @@ function generateProductForms(count) {
                     <div class="flex gap-4 pt-4">
                         <button 
                             type="submit" 
-                            class="flex-1 bg-gradient-to-r from-[#1e3a5f] to-[#1e3a5f] hover:from-[#0f172a] hover:to-[#0f172a] text-white font-semibold py-2.5 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+                            class="flex-1 bg-gradient-to-r from-[#2563eb] to-[#2563eb] hover:from-[#1e40af] hover:to-[#1e40af] text-white font-semibold py-2.5 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
                         >
                             <i class="fa-solid fa-check mr-2"></i> Add Product
                         </button>
@@ -173,10 +173,10 @@ function generateProductForms(count) {
                     </div>
 
                     <!-- Success/Error Messages -->
-                    <div class="successMessage hidden bg-slate-50 border border-slate-300 text-[#0f172a] px-4 py-3 rounded-lg text-sm">
+                    <div class="successMessage hidden bg-slate-50 border border-slate-300 text-[#1e40af] px-4 py-3 rounded-lg text-sm">
                         <i class="fa-solid fa-check-circle mr-2"></i> Product added successfully!
                     </div>
-                    <div class="errorMessage hidden bg-slate-50 border border-slate-300 text-[#0f172a] px-4 py-3 rounded-lg text-sm"></div>
+                    <div class="errorMessage hidden bg-slate-50 border border-slate-300 text-[#1e40af] px-4 py-3 rounded-lg text-sm"></div>
 
                 </form>
             </div>

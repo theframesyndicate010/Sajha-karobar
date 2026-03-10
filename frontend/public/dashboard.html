@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>sajha karobar - Dashboard</title>
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#1e40af">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,7 +17,7 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#f0f4ff',100:'#dbe4ff',200:'#bac8ff',300:'#91a7ff',400:'#748ffc',500:'#1e3a5f',600:'#0f172a',700:'#0c1220',800:'#080d17',900:'#04080e'}}}}}</script>
+    <script>tailwind.config={theme:{extend:{colors:{bank:{50:'#f0f4ff',100:'#dbe4ff',200:'#bac8ff',300:'#91a7ff',400:'#748ffc',500:'#2563eb',600:'#1e40af',700:'#1e3a8a',800:'#172554',900:'#0f1a40'}}}}}</script>
     
     <!-- Chart.js for the graphs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -61,14 +61,14 @@
             height: 100%;
             border-radius: 3px 0 0 3px;
         }
-        .bank-card-navy::before { background: linear-gradient(180deg, #1e3a5f, #2563eb); }
+        .bank-card-navy::before { background: linear-gradient(180deg, #1e40af, #2563eb); }
         .bank-card-amber::before { background: linear-gradient(180deg, #f59e0b, #d97706); }
         .bank-card-blue::before { background: linear-gradient(180deg, #2563eb, #3b82f6); }
-        .bank-card-slate::before { background: linear-gradient(180deg, #475569, #1e293b); }
+        .bank-card-slate::before { background: linear-gradient(180deg, #3b82f6, #60a5fa); }
 
         /* Hero banner gradient */
         .bank-hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #1e40af 100%);
         }
 
         /* Subtle pattern overlay */
@@ -83,7 +83,7 @@
 
         /* Table styles */
         .bank-table thead th {
-            background: #475569;
+            background: #2563eb;
             color: #f1f5f9;
             font-size: 10px;
             text-transform: uppercase;
@@ -126,7 +126,7 @@
         <header class="bg-white/90 backdrop-blur-md border-b border-slate-200/60 h-16 flex items-center justify-between px-4 lg:px-8 z-10">
             <!-- Left: Mobile Menu & Search -->
             <div class="flex items-center gap-4 flex-1">
-                <button onclick="toggleSidebar()" class="lg:hidden text-slate-500 hover:text-[#0f172a] p-1">
+                <button onclick="toggleSidebar()" class="lg:hidden text-slate-500 hover:text-[#1e40af] p-1">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
                 
@@ -140,7 +140,7 @@
 
             <!-- Right: Notifications & Profile -->
             <div class="flex items-center gap-4 lg:gap-6">
-                <button class="relative text-slate-400 hover:text-[#0f172a] transition p-2 rounded-full hover:bg-slate-100">
+                <button class="relative text-slate-400 hover:text-[#1e40af] transition p-2 rounded-full hover:bg-slate-100">
                     <i class="fa-regular fa-bell text-xl"></i>
                     <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-amber-400 rounded-full border-2 border-white animate-pulse"></span>
                 </button>
@@ -151,7 +151,7 @@
                     <div class="text-right hidden sm:block">
                         <p id="headerUserName" class="text-sm font-bold text-slate-800 leading-none">Loading...</p>
                     </div>
-                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] text-amber-400 border-2 border-amber-400/20 flex items-center justify-center font-bold shadow-md">
+                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-[#1e40af] to-[#2563eb] text-amber-400 border-2 border-amber-400/20 flex items-center justify-center font-bold shadow-md">
                         ?
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                         <button class="bg-white/10 backdrop-blur border border-white/20 text-white hover:bg-white/20 px-4 py-2 rounded-xl font-medium text-sm transition">
                             <i class="fa-solid fa-download mr-2"></i> Report
                         </button>
-                        <button class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#0f172a] px-5 py-2 rounded-xl font-semibold shadow-lg shadow-amber-400/20 flex items-center gap-2 transition active:scale-95 text-sm">
+                        <button class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#1e40af] px-5 py-2 rounded-xl font-semibold shadow-lg shadow-amber-400/20 flex items-center gap-2 transition active:scale-95 text-sm">
                             <i class="fa-solid fa-computer"></i> POS Counter
                         </button>
                     </div>
@@ -187,7 +187,7 @@
                 <!-- Card 1: Total Products -->
                 <div class="bank-card bank-card-navy rounded-xl p-2.5 lg:p-3.5">
                     <div class="flex items-center justify-between mb-1.5 lg:mb-2">
-                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-gradient-to-br from-[#0f172a]/80 to-[#1e3a5f]/80 rounded-lg flex items-center justify-center text-white/90">
+                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-gradient-to-br from-[#1e40af]/80 to-[#2563eb]/80 rounded-lg flex items-center justify-center text-white/90">
                             <i class="fa-solid fa-boxes-stacked text-xs"></i>
                         </div>
                         <span class="text-[8px] lg:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Products</span>
@@ -262,7 +262,7 @@
                         <!-- Items will be dynamically inserted here -->
                     </div>
                     
-                    <a href="/stock" class="w-full mt-4 py-2.5 text-sm text-[#0f172a] font-semibold bg-slate-50 hover:bg-slate-100 rounded-xl transition flex items-center justify-center gap-2 border border-slate-200">
+                    <a href="/stock" class="w-full mt-4 py-2.5 text-sm text-[#1e40af] font-semibold bg-slate-50 hover:bg-slate-100 rounded-xl transition flex items-center justify-center gap-2 border border-slate-200">
                         View All Stocks <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
@@ -281,7 +281,7 @@
                             <option value="">All Categories</option>
                         </select>
                         <label class="flex items-center gap-2 text-xs font-medium text-slate-500 whitespace-nowrap">
-                            <input type="checkbox" id="in-stock-filter" class="h-4 w-4 rounded border-slate-300 text-[#0f172a] focus:ring-blue-500 accent-[#0f172a]">
+                            <input type="checkbox" id="in-stock-filter" class="h-4 w-4 rounded border-slate-300 text-[#1e40af] focus:ring-blue-500 accent-[#1e40af]">
                             In Stock
                         </label>
                     </div>
@@ -312,8 +312,8 @@
                         <p class="text-xs text-slate-400">Latest transactions from point of sale</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="text-xs font-medium text-slate-500 hover:text-[#0f172a] px-3 py-1.5 border border-slate-200 rounded-lg bg-slate-50 hover:bg-slate-100 transition">Filter</button>
-                        <button class="text-xs font-medium text-white px-3 py-1.5 rounded-lg bg-[#0f172a] hover:bg-[#1e3a5f] transition">Export CSV</button>
+                        <button class="text-xs font-medium text-slate-500 hover:text-[#1e40af] px-3 py-1.5 border border-slate-200 rounded-lg bg-slate-50 hover:bg-slate-100 transition">Filter</button>
+                        <button class="text-xs font-medium text-white px-3 py-1.5 rounded-lg bg-[#1e40af] hover:bg-[#2563eb] transition">Export CSV</button>
                     </div>
                 </div>
                 
@@ -336,7 +336,7 @@
                     </table>
                 </div>
                 <div class="p-4 border-t border-slate-100 flex items-center justify-center">
-                    <button class="text-sm font-semibold text-[#0f172a] hover:text-[#1e3a5f] transition flex items-center gap-2">
+                    <button class="text-sm font-semibold text-[#1e40af] hover:text-[#2563eb] transition flex items-center gap-2">
                         View All Transactions <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
@@ -374,7 +374,7 @@
                 + '<p style="color:#fff;font-size:12px;font-weight:600;margin:0;">Install sajha karobar</p>'
                 + '<p style="color:#94a3b8;font-size:10px;margin:2px 0 0;">Get the full app experience</p>'
                 + '</div>'
-                + '<button id="iosInstallBtn" style="color:#0f172a;background:linear-gradient(135deg,#f59e0b,#d97706);border:none;border-radius:8px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;">Install</button>'
+                + '<button id="iosInstallBtn" style="color:#1e40af;background:linear-gradient(135deg,#f59e0b,#d97706);border:none;border-radius:8px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;">Install</button>'
                 + '</div></div>';
             document.body.appendChild(banner);
 
@@ -383,7 +383,7 @@
             modal.id = 'iosInstallModal';
             modal.style.cssText = 'display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);align-items:flex-end;justify-content:center;padding:0 12px 12px;';
             modal.innerHTML = '<div style="width:100%;max-width:400px;background:#fff;border-radius:20px;overflow:hidden;">'
-                + '<div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:20px;text-align:center;">'
+                + '<div style="background:linear-gradient(135deg,#1e40af,#2563eb);padding:20px;text-align:center;">'
                 + '<img src="/assets/images/icon-192.png" style="width:48px;height:48px;border-radius:12px;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,0.3);">'
                 + '<p style="color:#fff;font-size:15px;font-weight:700;margin:0;">Install sajha karobar</p>'
                 + '<p style="color:#94a3b8;font-size:11px;margin:4px 0 0;">Follow these steps in Safari</p>'
@@ -401,7 +401,7 @@
                 + '<div style="min-width:28px;height:28px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">3</div>'
                 + '<div><p style="font-size:12px;font-weight:600;color:#1e293b;margin:0;">Tap "Add"</p><p style="font-size:10px;color:#64748b;margin:2px 0 0;">App will appear on your home screen</p></div>'
                 + '</div>'
-                + '<button id="iosModalClose" style="width:100%;padding:10px;background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;">Got it!</button>'
+                + '<button id="iosModalClose" style="width:100%;padding:10px;background:linear-gradient(135deg,#1e40af,#2563eb);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;">Got it!</button>'
                 + '</div></div>';
             document.body.appendChild(modal);
 

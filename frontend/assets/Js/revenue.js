@@ -159,8 +159,8 @@ function renderSalesTable() {
             <td class="px-6 py-4 text-gray-700">${escapeHtml(bill.retailerName)}</td>
             <td class="px-6 py-4 text-center text-gray-700">${bill.billDate}</td>
             <td class="px-6 py-4 text-right font-semibold text-gray-800">${formatCurrency(bill.totalAmount)}</td>
-            <td class="px-6 py-4 text-right text-[#1e3a5f]">${formatCurrency(bill.paidAmount)}</td>
-            <td class="px-6 py-4 text-right font-semibold ${bill.remainingBalance > 0 ? 'text-[#1e3a5f]' : 'text-[#0f172a]'}">
+            <td class="px-6 py-4 text-right text-[#2563eb]">${formatCurrency(bill.paidAmount)}</td>
+            <td class="px-6 py-4 text-right font-semibold ${bill.remainingBalance > 0 ? 'text-[#2563eb]' : 'text-[#1e40af]'}">
                 ${formatCurrency(bill.remainingBalance)}
             </td>
         </tr>
@@ -198,12 +198,12 @@ function renderStockTable() {
     const sortedCategories = Object.entries(categoryData).sort((a, b) => b[1].value - a[1].value);
     
     const colors = [
-        'bg-slate-50 text-[#0f172a]',
-        'bg-slate-100 text-[#0f172a]',
-        'bg-slate-200 text-[#0f172a]',
-        'bg-slate-50 text-[#1e3a5f]',
-        'bg-slate-100 text-[#0f172a]',
-        'bg-slate-200 text-[#0f172a]'
+        'bg-slate-50 text-[#1e40af]',
+        'bg-slate-100 text-[#1e40af]',
+        'bg-slate-200 text-[#1e40af]',
+        'bg-slate-50 text-[#2563eb]',
+        'bg-slate-100 text-[#1e40af]',
+        'bg-slate-200 text-[#1e40af]'
     ];
     
     tbody.innerHTML = sortedCategories.map(([name, data], index) => {
@@ -278,7 +278,7 @@ function renderSalesDateChart() {
                 {
                     label: 'Sales',
                     data: sortedDates.map(d => dateData[d].sales),
-                    borderColor: '#1e3a5f',
+                    borderColor: '#2563eb',
                     backgroundColor: gradient,
                     borderWidth: 2,
                     fill: true,
@@ -349,7 +349,7 @@ function renderSalesChart() {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 6);
     
-    const colors = ['#1e3a5f', '#2563eb', '#60a5fa', '#93c5fd', '#0f172a', '#0f172a'];
+    const colors = ['#2563eb', '#2563eb', '#60a5fa', '#93c5fd', '#1e40af', '#1e40af'];
     
     categoryChart = new Chart(ctx, {
         type: 'doughnut',
@@ -410,7 +410,7 @@ function renderCategoryChart() {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 6);
     
-    const colors = ['#1e3a5f', '#2563eb', '#60a5fa', '#0f172a', '#93c5fd', '#0c1222'];
+    const colors = ['#2563eb', '#2563eb', '#60a5fa', '#1e40af', '#93c5fd', '#0c1222'];
     
     categoryChart = new Chart(ctx, {
         type: 'doughnut',
