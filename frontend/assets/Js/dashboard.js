@@ -316,7 +316,7 @@ async function fetchRecentSales() {
                     <td class="py-4 px-6 font-semibold text-[#0F766E]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
                     <td class="py-4 px-6">
                         <div class="flex items-center gap-3">
-                            <div class="h-8 w-8 rounded-full bg-[#0F766E] text-orange-400 flex items-center justify-center text-xs font-bold">${initials}</div>
+                            <div class="h-8 w-8 rounded-full bg-[#0F766E] text-teal-400 flex items-center justify-center text-xs font-bold">${initials}</div>
                             <span class="font-medium text-slate-800">${productName}</span>
                         </div>
                     </td>
