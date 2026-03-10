@@ -159,8 +159,8 @@ function renderSalesTable() {
             <td class="px-6 py-4 text-gray-700">${escapeHtml(bill.retailerName)}</td>
             <td class="px-6 py-4 text-center text-gray-700">${bill.billDate}</td>
             <td class="px-6 py-4 text-right font-semibold text-gray-800">${formatCurrency(bill.totalAmount)}</td>
-            <td class="px-6 py-4 text-right text-green-600">${formatCurrency(bill.paidAmount)}</td>
-            <td class="px-6 py-4 text-right font-semibold ${bill.remainingBalance > 0 ? 'text-green-600' : 'text-green-700'}">
+            <td class="px-6 py-4 text-right text-[#1e3a5f]">${formatCurrency(bill.paidAmount)}</td>
+            <td class="px-6 py-4 text-right font-semibold ${bill.remainingBalance > 0 ? 'text-[#1e3a5f]' : 'text-[#0f172a]'}">
                 ${formatCurrency(bill.remainingBalance)}
             </td>
         </tr>
@@ -198,12 +198,12 @@ function renderStockTable() {
     const sortedCategories = Object.entries(categoryData).sort((a, b) => b[1].value - a[1].value);
     
     const colors = [
-        'bg-green-50 text-green-700',
-        'bg-green-100 text-green-800',
-        'bg-green-200 text-green-800',
-        'bg-green-50 text-green-600',
-        'bg-green-100 text-green-700',
-        'bg-green-200 text-green-700'
+        'bg-slate-50 text-[#0f172a]',
+        'bg-slate-100 text-[#0f172a]',
+        'bg-slate-200 text-[#0f172a]',
+        'bg-slate-50 text-[#1e3a5f]',
+        'bg-slate-100 text-[#0f172a]',
+        'bg-slate-200 text-[#0f172a]'
     ];
     
     tbody.innerHTML = sortedCategories.map(([name, data], index) => {
@@ -221,7 +221,7 @@ function renderStockTable() {
                 <td class="px-6 py-4">
                     <div class="flex items-center justify-center gap-2">
                         <div class="w-24 bg-gray-200 rounded-full h-2">
-                            <div class="bg-green-500 h-2 rounded-full" style="width: ${percentage}%"></div>
+                            <div class="bg-slate-500 h-2 rounded-full" style="width: ${percentage}%"></div>
                         </div>
                         <span class="text-sm font-medium text-gray-600 w-12">${percentage}%</span>
                     </div>
@@ -278,7 +278,7 @@ function renderSalesDateChart() {
                 {
                     label: 'Sales',
                     data: sortedDates.map(d => dateData[d].sales),
-                    borderColor: '#16a34a',
+                    borderColor: '#1e3a5f',
                     backgroundColor: gradient,
                     borderWidth: 2,
                     fill: true,
@@ -349,7 +349,7 @@ function renderSalesChart() {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 6);
     
-    const colors = ['#16a34a', '#22c55e', '#4ade80', '#86efac', '#15803d', '#166534'];
+    const colors = ['#1e3a5f', '#2563eb', '#60a5fa', '#93c5fd', '#0f172a', '#0f172a'];
     
     categoryChart = new Chart(ctx, {
         type: 'doughnut',
@@ -410,7 +410,7 @@ function renderCategoryChart() {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 6);
     
-    const colors = ['#16A34A', '#22C55E', '#4ADE80', '#15803D', '#86EFAC', '#14532D'];
+    const colors = ['#1e3a5f', '#2563eb', '#60a5fa', '#0f172a', '#93c5fd', '#0c1222'];
     
     categoryChart = new Chart(ctx, {
         type: 'doughnut',

@@ -99,52 +99,52 @@ function createSidebar(activePage = '') {
         <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
 
         <!-- SIDEBAR -->
-        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 bg-[#0f172a] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none">
             
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-100">
+            <div class="p-6 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                    <div class="bg-[#166534] text-white h-10 w-10 flex items-center justify-center rounded-lg font-bold text-2xl shadow-md" id="sidebarInitials">...</div>
+                    <div class="bg-gradient-to-br from-amber-400 to-amber-500 text-[#0f172a] h-10 w-10 flex items-center justify-center rounded-lg font-bold text-lg shadow-md" id="sidebarInitials">...</div>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-800 tracking-tight" id="sidebarBusinessName">Loading...</h1>
-                        <p class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">"साझा समाधान, सजिलो व्यापार"</p>
+                        <h1 class="text-lg font-bold text-white tracking-tight" id="sidebarBusinessName">Loading...</h1>
+                        <p class="text-[10px] text-amber-400/70 font-medium uppercase tracking-wider">"साझा समाधान, सजिलो व्यापार"</p>
                     </div>
                 </div>
             </div>
 
             <!-- Navigation -->
             <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-1">
-                <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Main Menu</p>
+                <p class="px-4 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Main Menu</p>
                 
-                <a href="/dashboard" class="sidebar-link ${activePage === 'dashboard' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-gray-600">
+                <a href="/dashboard" class="sidebar-link ${activePage === 'dashboard' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-400">
                     <i class="fa-solid fa-house w-5 text-center transition-colors"></i> Dashboard
                 </a>
-                <a href="/sale" class="sidebar-link ${activePage === 'sale' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-gray-600">
-                    <i class="fa-solid fa-cart-shopping w-5 text-center text-gray-400 transition-colors"></i> Sale
+                <a href="/sale" class="sidebar-link ${activePage === 'sale' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-400">
+                    <i class="fa-solid fa-cart-shopping w-5 text-center transition-colors"></i> Sale
                 </a>
-                <a href="/stock" class="sidebar-link ${activePage === 'stock' || activePage === 'product' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-gray-600">
-                    <i class="fa-solid fa-boxes-stacked w-5 text-center text-gray-400 transition-colors"></i> Stocks
+                <a href="/stock" class="sidebar-link ${activePage === 'stock' || activePage === 'product' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-400">
+                    <i class="fa-solid fa-boxes-stacked w-5 text-center transition-colors"></i> Stocks
                 </a>
                 
-                <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-6">Finance & People</p>
+                <p class="px-4 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-6">Finance & People</p>
                 
-                <a href="/bill" class="sidebar-link ${activePage === 'bill' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-gray-600">
-                    <i class="fa-solid fa-file-invoice w-5 text-center text-gray-400 transition-colors"></i> Create Bill
+                <a href="/bill" class="sidebar-link ${activePage === 'bill' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-400">
+                    <i class="fa-solid fa-file-invoice w-5 text-center transition-colors"></i> Create Bill
                 </a>
-                <a href="/bills" class="sidebar-link ${activePage === 'bills' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-gray-600">
-                    <i class="fa-solid fa-list w-5 text-center text-gray-400 transition-colors"></i> Bills History
+                <a href="/bills" class="sidebar-link ${activePage === 'bills' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-400">
+                    <i class="fa-solid fa-list w-5 text-center transition-colors"></i> Bills History
                 </a>
-                <a href="/workers" class="sidebar-link ${activePage === 'workers' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-gray-600">
-                    <i class="fa-solid fa-user-group w-5 text-center text-gray-400 transition-colors"></i> Workers
+                <a href="/workers" class="sidebar-link ${activePage === 'workers' ? 'active' : ''} flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-400">
+                    <i class="fa-solid fa-user-group w-5 text-center transition-colors"></i> Workers
                 </a>
             </nav>
 
             <!-- Bottom Actions -->
-            <div class="p-4 border-t border-gray-100">
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-green-50 hover:text-green-600 rounded-xl font-medium transition duration-200 opacity-50 cursor-not-allowed" title="Coming Soon">
+            <div class="p-4 border-t border-white/10">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white/5 hover:text-slate-300 rounded-xl font-medium transition duration-200 opacity-50 cursor-not-allowed" title="Coming Soon">
                     <i class="fa-solid fa-gear w-5 text-center"></i> Settings
                 </a>
-                <a href="#" onclick="logout()" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-green-50 hover:text-green-600 rounded-xl font-medium transition duration-200">
+                <a href="#" onclick="logout()" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-red-500/10 hover:text-red-400 rounded-xl font-medium transition duration-200">
                     <i class="fa-solid fa-arrow-right-from-bracket w-5 text-center"></i> Log Out
                 </a>
             </div>
@@ -346,15 +346,15 @@ function getSidebarStyles() {
             align-items: center;
         }
         .sidebar-link:hover {
-            background: linear-gradient(90deg, #166534 0%, #15803d 100%);
+            background: linear-gradient(90deg, #1e3a5f 0%, #2563eb 100%);
             color: #fff !important;
-            box-shadow: 0 4px 6px -1px rgba(22, 101, 52, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(30, 58, 95, 0.4);
             transform: translateX(4px);
         }
         .sidebar-link.active {
-            background: linear-gradient(90deg, #166534 0%, #15803d 100%);
+            background: linear-gradient(90deg, #1e3a5f 0%, #2563eb 100%);
             color: #fff !important;
-            box-shadow: 0 4px 6px -1px rgba(22, 101, 52, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(30, 58, 95, 0.4);
         }
         .sidebar-link:hover i,
         .sidebar-link.active i {
@@ -378,7 +378,7 @@ function getSidebarStyles() {
             -webkit-tap-highlight-color: transparent;
         }
         .bottom-nav-item.active {
-            color: #166534;
+            color: #1e3a5f;
         }
         .bottom-nav-item.active i {
             transform: scale(1.1);

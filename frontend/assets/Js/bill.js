@@ -134,7 +134,7 @@ function showAutocompleteList(products, inputElement) {
 
     products.slice(0, 10).forEach(product => {
         const item = document.createElement('div');
-        item.className = 'px-4 py-2 hover:bg-green-50 cursor-pointer border-b border-gray-100 text-sm';
+        item.className = 'px-4 py-2 hover:bg-slate-50 cursor-pointer border-b border-gray-100 text-sm';
         item.innerHTML = `<strong>${product.name}</strong> <span class="text-gray-500">(Stock: ${product.stock_quantity})</span>`;
         
         item.addEventListener('click', function() {
@@ -169,7 +169,7 @@ function switchBillMode(mode) {
             buyBtn.classList.remove('active-mode');
             const icon = document.querySelector('#retailerSection h3 i');
             if (icon) {
-                icon.className = 'fa-solid fa-user-tie text-green-600';
+                icon.className = 'fa-solid fa-user-tie text-[#1e3a5f]';
             }
             document.getElementById('partyLabel').textContent = 'Retailer';
             document.getElementById('partyNameLabel').textContent = 'Retailer';
@@ -179,7 +179,7 @@ function switchBillMode(mode) {
             sellBtn.classList.remove('active-mode');
             const icon = document.querySelector('#retailerSection h3 i');
             if (icon) {
-                icon.className = 'fa-solid fa-user-tie text-green-600';
+                icon.className = 'fa-solid fa-user-tie text-[#1e3a5f]';
             }
             document.getElementById('partyLabel').textContent = 'Supplier/Vendor';
             document.getElementById('partyNameLabel').textContent = 'Supplier/Vendor';
@@ -308,7 +308,7 @@ function renderItems() {
                         ${item.numOfSets ? item.numOfSets + ' sets' : ''} ${sizeInfo} = ${item.quantity} qty × Rs ${item.unitPrice.toFixed(2)} = <span class="font-bold text-gray-800">Rs ${item.total.toFixed(2)}</span>
                     </p>
                 </div>
-                <button onclick="removeItem(${item.id})" class="text-green-600 hover:text-green-700 hover:bg-green-50 p-1 rounded transition flex-shrink-0">
+                <button onclick="removeItem(${item.id})" class="text-[#1e3a5f] hover:text-[#0f172a] hover:bg-slate-50 p-1 rounded transition flex-shrink-0">
                     <i class="fa-solid fa-trash text-xs"></i>
                 </button>
             </div>
@@ -552,17 +552,17 @@ async function printBill() {
             <style>
                 body { font-family: Arial, sans-serif; margin: 20px; }
                 .header { text-align: center; margin-bottom: 20px; }
-                h1 { margin: 0; color: #16a34a; }
+                h1 { margin: 0; color: #1e3a5f; }
                 .bill-info { margin-bottom: 20px; }
                 .bill-info p { margin: 5px 0; }
                 table { width: 100%; border-collapse: collapse; margin: 20px 0; }
                 .summary { float: right; width: 300px; margin-top: 20px; }
                 .summary p { display: flex; justify-content: space-between; margin: 8px 0; }
-                .total { font-weight: bold; font-size: 18px; color: #16a34a; border-top: 2px solid #16a34a; padding-top: 10px; }
+                .total { font-weight: bold; font-size: 18px; color: #1e3a5f; border-top: 2px solid #1e3a5f; padding-top: 10px; }
                 .payment-badge { 
                     display: inline-block; 
                     padding: 5px 10px; 
-                    background-color: ${paymentType === 'full' ? '#16a34a' : '#22c55e'}; 
+                    background-color: ${paymentType === 'full' ? '#1e3a5f' : '#2563eb'}; 
                     color: white; 
                     border-radius: 3px; 
                     margin: 5px 0;

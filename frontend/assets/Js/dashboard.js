@@ -61,11 +61,11 @@ function initChart() {
             datasets: [{
                 label: 'Revenue (Rs)',
                 data: [0, 0, 0, 0, 0, 0, 0],
-                borderColor: '#16a34a',
+                borderColor: '#1e3a5f',
                 backgroundColor: gradient,
                 borderWidth: 2,
                 pointBackgroundColor: '#fff',
-                pointBorderColor: '#16a34a',
+                pointBorderColor: '#1e3a5f',
                 pointBorderWidth: 2,
                 pointRadius: 4,
                 pointHoverRadius: 6,
@@ -75,10 +75,10 @@ function initChart() {
             {
                 label: 'Qty Sold',
                 data: [0, 0, 0, 0, 0, 0, 0],
-                borderColor: '#22c55e',
+                borderColor: '#2563eb',
                 borderWidth: 2,
                 pointBackgroundColor: '#fff',
-                pointBorderColor: '#22c55e',
+                pointBorderColor: '#2563eb',
                 pointRadius: 0,
                 pointHoverRadius: 4,
                 borderDash: [5, 5],
@@ -164,10 +164,10 @@ async function fetchSummary() {
         if (el('total-stock')) el('total-stock').textContent = (data.total_stock || 0).toLocaleString() + ' units';
         if (el('stock-alerts')) {
             const alerts = [];
-            if (data.stock_value > 0) alerts.push(`<span class="text-green-700"><i class="fa-solid fa-coins"></i> Rs ${(data.stock_value || 0).toLocaleString()} value</span>`);
-            if (data.out_of_stock_count > 0) alerts.push(`<span class="text-green-600"><i class="fa-solid fa-circle-exclamation"></i> ${data.out_of_stock_count} out of stock</span>`);
-            if (data.low_stock_count > 0) alerts.push(`<span class="text-green-500"><i class="fa-solid fa-triangle-exclamation"></i> ${data.low_stock_count} low stock</span>`);
-            if (alerts.length === 0) alerts.push('<span class="text-green-500"><i class="fa-solid fa-check-circle"></i> All stocked</span>');
+            if (data.stock_value > 0) alerts.push(`<span class="text-[#0f172a]"><i class="fa-solid fa-coins"></i> Rs ${(data.stock_value || 0).toLocaleString()} value</span>`);
+            if (data.out_of_stock_count > 0) alerts.push(`<span class="text-[#1e3a5f]"><i class="fa-solid fa-circle-exclamation"></i> ${data.out_of_stock_count} out of stock</span>`);
+            if (data.low_stock_count > 0) alerts.push(`<span class="text-[#1e3a5f]"><i class="fa-solid fa-triangle-exclamation"></i> ${data.low_stock_count} low stock</span>`);
+            if (alerts.length === 0) alerts.push('<span class="text-[#1e3a5f]"><i class="fa-solid fa-check-circle"></i> All stocked</span>');
             el('stock-alerts').innerHTML = alerts.join(' · ');
         }
     } catch (error) {
@@ -262,7 +262,7 @@ function renderProducts(products) {
             <td class="py-4 px-6 text-gray-500">${product.category || product.category_name || ''}</td>
             <td class="py-4 px-6 text-gray-800">Rs ${(product.selling_price || product.price || 0).toLocaleString()}</td>
             <td class="py-4 px-6">
-                <span class="${(product.stock_quantity || product.quantity || 0) === 0 ? 'text-green-600' : (product.stock_quantity || product.quantity || 0) <= 10 ? 'text-green-500' : 'text-green-700'} font-medium">
+                <span class="${(product.stock_quantity || product.quantity || 0) === 0 ? 'text-[#1e3a5f]' : (product.stock_quantity || product.quantity || 0) <= 10 ? 'text-[#1e3a5f]' : 'text-[#0f172a]'} font-medium">
                     ${(product.stock_quantity || product.quantity || 0).toLocaleString()}
                 </span>
             </td>
@@ -313,7 +313,7 @@ async function fetchRecentSales() {
 
             return `
                 <tr class="hover:bg-gray-50 transition group">
-                    <td class="py-4 px-6 font-medium text-green-600">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
+                    <td class="py-4 px-6 font-medium text-[#1e3a5f]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
                     <td class="py-4 px-6">
                         <div class="flex items-center gap-3">
                             <div class="h-8 w-8 rounded-full bg-${color}-100 text-${color}-600 flex items-center justify-center text-xs font-bold">${initials}</div>
@@ -324,8 +324,8 @@ async function fetchRecentSales() {
                     <td class="py-4 px-6 font-bold text-gray-800">Rs ${amount}</td>
                     <td class="py-4 px-6 text-gray-500">${sale.quantity_sold || 0} units</td>
                     <td class="py-4 px-6">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-100">
-                            <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Completed
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-50 text-[#0f172a] border border-slate-200">
+                            <span class="h-1.5 w-1.5 rounded-full bg-slate-500"></span> Completed
                         </span>
                     </td>
                     <td class="py-4 px-6 text-right">
