@@ -61,24 +61,14 @@
             height: 100%;
             border-radius: 3px 0 0 3px;
         }
-        .bank-card-navy::before { background: linear-gradient(180deg, #581C87, #7C3AED); }
-        .bank-card-amber::before { background: linear-gradient(180deg, #DB2777, #BE185D); }
-        .bank-card-blue::before { background: linear-gradient(180deg, #7C3AED, #A855F7); }
-        .bank-card-slate::before { background: linear-gradient(180deg, #A855F7, #C084FC); }
+        .bank-card-navy::before { background: #7C3AED; }
+        .bank-card-amber::before { background: #7C3AED; }
+        .bank-card-blue::before { background: #7C3AED; }
+        .bank-card-slate::before { background: #7C3AED; }
 
-        /* Hero banner gradient */
+        /* Hero banner */
         .bank-hero {
-            background: linear-gradient(135deg, #3B0764 0%, #7C3AED 40%, #DB2777 100%);
-        }
-
-        /* Subtle pattern overlay */
-        .bank-hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(124,58,237,0.12) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(219,39,119,0.1) 0%, transparent 50%);
-            pointer-events: none;
+            background: #7C3AED;
         }
 
         /* Table styles */
@@ -151,7 +141,7 @@
                     <div class="text-right hidden sm:block">
                         <p id="headerUserName" class="text-sm font-bold text-slate-800 leading-none">Loading...</p>
                     </div>
-                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#DB2777] text-pink-400 border-2 border-pink-400/20 flex items-center justify-center font-bold shadow-md">
+                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-[#7C3AED] text-pink-400 border-2 border-pink-400/20 flex items-center justify-center font-bold shadow-md">
                         ?
                     </div>
                 </div>
@@ -173,7 +163,7 @@
                         <button class="bg-white/10 backdrop-blur border border-white/20 text-white hover:bg-white/20 px-4 py-2 rounded-xl font-medium text-sm transition">
                             <i class="fa-solid fa-download mr-2"></i> Report
                         </button>
-                        <button class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-[#581C87] px-5 py-2 rounded-xl font-semibold shadow-lg shadow-pink-400/20 flex items-center gap-2 transition active:scale-95 text-sm">
+                        <button class="bg-[#7C3AED] hover:bg-[#6D28D9] text-[#581C87] px-5 py-2 rounded-xl font-semibold shadow-lg shadow-pink-400/20 flex items-center gap-2 transition active:scale-95 text-sm">
                             <i class="fa-solid fa-computer"></i> POS Counter
                         </button>
                     </div>
@@ -187,7 +177,7 @@
                 <!-- Card 1: Total Products -->
                 <div class="bank-card bank-card-navy rounded-xl p-2.5 lg:p-3.5">
                     <div class="flex items-center justify-between mb-1.5 lg:mb-2">
-                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-gradient-to-br from-[#581C87]/80 to-[#7C3AED]/80 rounded-lg flex items-center justify-center text-white/90">
+                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-[#7C3AED] rounded-lg flex items-center justify-center text-white/90">
                             <i class="fa-solid fa-boxes-stacked text-xs"></i>
                         </div>
                         <span class="text-[8px] lg:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Products</span>
@@ -198,7 +188,7 @@
                 <!-- Card 2: Revenue -->
                 <div class="bank-card bank-card-amber rounded-xl p-2.5 lg:p-3.5">
                     <div class="flex items-center justify-between mb-1.5 lg:mb-2">
-                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-gradient-to-br from-pink-400/80 to-pink-600/80 rounded-lg flex items-center justify-center text-white/90">
+                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-[#7C3AED] rounded-lg flex items-center justify-center text-white/90">
                             <i class="fa-solid fa-sack-dollar text-xs"></i>
                         </div>
                         <span class="text-[8px] lg:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Revenue</span>
@@ -209,7 +199,7 @@
                 <!-- Card 3: Total Sales Count -->
                 <div class="bank-card bank-card-blue rounded-xl p-2.5 lg:p-3.5">
                     <div class="flex items-center justify-between mb-1.5 lg:mb-2">
-                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-gradient-to-br from-violet-500/80 to-purple-800/80 rounded-lg flex items-center justify-center text-white/90">
+                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-[#7C3AED] rounded-lg flex items-center justify-center text-white/90">
                             <i class="fa-solid fa-arrow-trend-up text-xs"></i>
                         </div>
                         <span class="text-[8px] lg:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Sales</span>
@@ -220,7 +210,7 @@
                 <!-- Card 4: Stock Status -->
                 <div class="bank-card bank-card-slate rounded-xl p-2.5 lg:p-3.5">
                     <div class="flex items-center justify-between mb-1.5 lg:mb-2">
-                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-gradient-to-br from-slate-500/80 to-slate-700/80 rounded-lg flex items-center justify-center text-white/90">
+                        <div class="h-7 w-7 lg:h-8 lg:w-8 bg-slate-700 rounded-lg flex items-center justify-center text-white/90">
                             <i class="fa-solid fa-warehouse text-xs"></i>
                         </div>
                         <span class="text-[8px] lg:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Stock</span>
@@ -374,7 +364,7 @@
                 + '<p style="color:#fff;font-size:12px;font-weight:600;margin:0;">Install sajha karobar</p>'
                 + '<p style="color:#94a3b8;font-size:10px;margin:2px 0 0;">Get the full app experience</p>'
                 + '</div>'
-                + '<button id="iosInstallBtn" style="color:#581C87;background:linear-gradient(135deg,#DB2777,#BE185D);border:none;border-radius:8px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;">Install</button>'
+                + '<button id="iosInstallBtn" style="color:#581C87;background: #7C3AED;border:none;border-radius:8px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;">Install</button>'
                 + '</div></div>';
             document.body.appendChild(banner);
 
@@ -383,25 +373,25 @@
             modal.id = 'iosInstallModal';
             modal.style.cssText = 'display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);align-items:flex-end;justify-content:center;padding:0 12px 12px;';
             modal.innerHTML = '<div style="width:100%;max-width:400px;background:#fff;border-radius:20px;overflow:hidden;">'
-                + '<div style="background:linear-gradient(135deg,#581C87,#7C3AED);padding:20px;text-align:center;">'
+                + '<div style="background: #7C3AED;padding:20px;text-align:center;">'
                 + '<img src="/assets/images/icon-192.png" style="width:48px;height:48px;border-radius:12px;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,0.3);">'
                 + '<p style="color:#fff;font-size:15px;font-weight:700;margin:0;">Install sajha karobar</p>'
                 + '<p style="color:#94a3b8;font-size:11px;margin:4px 0 0;">Follow these steps in Safari</p>'
                 + '</div>'
                 + '<div style="padding:16px;">'
                 + '<div style="display:flex;align-items:center;gap:12px;padding:10px;background:#f8fafc;border-radius:10px;margin-bottom:8px;">'
-                + '<div style="min-width:28px;height:28px;background:linear-gradient(135deg,#A855F7,#7C3AED);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">1</div>'
+                + '<div style="min-width:28px;height:28px;background: #7C3AED;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">1</div>'
                 + '<div><p style="font-size:12px;font-weight:600;color:#1e293b;margin:0;">Tap the Share button</p><p style="font-size:10px;color:#64748b;margin:2px 0 0;">The <svg style="display:inline;width:12px;height:12px;vertical-align:-2px;" fill="#A855F7" viewBox="0 0 24 24"><path d="M12 2l3.5 3.5-1.4 1.4L13 5.8V16h-2V5.8L9.9 6.9 8.5 5.5 12 2zm7 9v9c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2v-9h2v9h10v-9h2z"/></svg> icon at bottom of Safari</p></div>'
                 + '</div>'
                 + '<div style="display:flex;align-items:center;gap:12px;padding:10px;background:#f8fafc;border-radius:10px;margin-bottom:8px;">'
-                + '<div style="min-width:28px;height:28px;background:linear-gradient(135deg,#A855F7,#7C3AED);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">2</div>'
+                + '<div style="min-width:28px;height:28px;background: #7C3AED;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">2</div>'
                 + '<div><p style="font-size:12px;font-weight:600;color:#1e293b;margin:0;">Add to Home Screen</p><p style="font-size:10px;color:#64748b;margin:2px 0 0;">Scroll down and tap "Add to Home Screen"</p></div>'
                 + '</div>'
                 + '<div style="display:flex;align-items:center;gap:12px;padding:10px;background:#f8fafc;border-radius:10px;margin-bottom:14px;">'
-                + '<div style="min-width:28px;height:28px;background:linear-gradient(135deg,#DB2777,#BE185D);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">3</div>'
+                + '<div style="min-width:28px;height:28px;background: #7C3AED;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">3</div>'
                 + '<div><p style="font-size:12px;font-weight:600;color:#1e293b;margin:0;">Tap "Add"</p><p style="font-size:10px;color:#64748b;margin:2px 0 0;">App will appear on your home screen</p></div>'
                 + '</div>'
-                + '<button id="iosModalClose" style="width:100%;padding:10px;background:linear-gradient(135deg,#581C87,#7C3AED);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;">Got it!</button>'
+                + '<button id="iosModalClose" style="width:100%;padding:10px;background: #7C3AED;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;">Got it!</button>'
                 + '</div></div>';
             document.body.appendChild(modal);
 

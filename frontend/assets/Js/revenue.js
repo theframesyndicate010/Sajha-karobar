@@ -267,8 +267,8 @@ function renderSalesDateChart() {
     
     // Create gradient
     let gradient = ctx.createLinearGradient(0, 0, 0, 200);
-    gradient.addColorStop(0, 'rgba(22, 163, 74, 0.3)');
-    gradient.addColorStop(1, 'rgba(22, 163, 74, 0.0)');
+gradient.addColorStop(0, 'rgba(124, 58, 237, 0.3)');
+                gradient.addColorStop(1, 'rgba(124, 58, 237, 0.0)');
     
     salesChart = new Chart(ctx, {
         type: 'line',

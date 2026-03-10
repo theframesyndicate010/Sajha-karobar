@@ -160,7 +160,7 @@ function generateProductForms(count) {
                     <div class="flex gap-4 pt-4">
                         <button 
                             type="submit" 
-                            class="flex-1 bg-gradient-to-r from-[#7C3AED] to-[#7C3AED] hover:from-[#581C87] hover:to-[#581C87] text-white font-semibold py-2.5 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+                            class="flex-1 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold py-2.5 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
                         >
                             <i class="fa-solid fa-check mr-2"></i> Add Product
                         </button>

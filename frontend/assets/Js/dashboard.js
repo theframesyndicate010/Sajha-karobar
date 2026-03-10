@@ -51,8 +51,8 @@ function initChart() {
     const ctx = canvas.getContext('2d');
 
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(30, 58, 95, 0.15)');
-    gradient.addColorStop(1, 'rgba(30, 58, 95, 0.0)');
+gradient.addColorStop(0, 'rgba(124, 58, 237, 0.15)');
+            gradient.addColorStop(1, 'rgba(124, 58, 237, 0.0)');
 
     salesChart = new Chart(ctx, {
         type: 'line',
@@ -211,7 +211,7 @@ async function fetchTopProducts() {
         topProductsList.innerHTML = products.map((product, idx) => `
             <div class="flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-slate-50 transition group">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold group-hover:from-[#581C87] group-hover:to-[#7C3AED] group-hover:text-white transition">
+                    <div class="w-9 h-9 rounded-lg bg-slate-700 flex items-center justify-center text-slate-500 text-xs font-bold group-hover:from-[#581C87] group-hover:to-[#7C3AED] group-hover:text-white transition">
                         ${idx + 1}
                     </div>
                     <div>
@@ -316,7 +316,7 @@ async function fetchRecentSales() {
                     <td class="py-4 px-6 font-semibold text-[#7C3AED]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
                     <td class="py-4 px-6">
                         <div class="flex items-center gap-3">
-                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-[#581C87] to-[#7C3AED] text-pink-400 flex items-center justify-center text-xs font-bold">${initials}</div>
+                            <div class="h-8 w-8 rounded-full bg-[#7C3AED] text-pink-400 flex items-center justify-center text-xs font-bold">${initials}</div>
                             <span class="font-medium text-slate-800">${productName}</span>
                         </div>
                     </td>

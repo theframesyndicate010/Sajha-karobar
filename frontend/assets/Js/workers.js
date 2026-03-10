@@ -125,7 +125,7 @@ function renderWorkers() {
             <tr class="hover:bg-gray-50 transition">
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
-                        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#7C3AED] flex items-center justify-center text-white font-bold text-sm">
+                        <div class="h-10 w-10 rounded-full bg-[#7C3AED] flex items-center justify-center text-white font-bold text-sm">
                             ${initials}
                         </div>
                         <div>
@@ -331,7 +331,7 @@ function viewWorker(workerId) {
 
     document.getElementById('viewWorkerContent').innerHTML = `
         <div class="flex items-center gap-4 mb-6">
-            <div class="h-20 w-20 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#7C3AED] flex items-center justify-center text-white font-bold text-2xl">
+            <div class="h-20 w-20 rounded-full bg-[#7C3AED] flex items-center justify-center text-white font-bold text-2xl">
                 ${initials}
             </div>
             <div>
