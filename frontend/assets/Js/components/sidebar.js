@@ -99,7 +99,7 @@ function createSidebar(activePage = '') {
         <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
 
         <!-- SIDEBAR -->
-        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 bg-[#0f172a] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full shadow-xl lg:shadow-none" style="background: linear-gradient(180deg, #0f172a 0%, #162a4a 40%, #1e3a5f 70%, #0f172a 100%);">
             
             <!-- Logo -->
             <div class="p-6 border-b border-white/10">
