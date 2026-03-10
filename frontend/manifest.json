@@ -51,26 +51,51 @@
     {
       "name": "Dashboard",
       "short_name": "Dashboard",
+      "description": "View business overview",
       "url": "/dashboard",
       "icons": [{ "src": "/assets/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Create Bill",
       "short_name": "New Bill",
+      "description": "Create a new bill",
       "url": "/bill",
       "icons": [{ "src": "/assets/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Sales",
       "short_name": "Sales",
+      "description": "View sales records",
       "url": "/sale",
       "icons": [{ "src": "/assets/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Stock",
       "short_name": "Stock",
+      "description": "Manage inventory",
       "url": "/stock",
       "icons": [{ "src": "/assets/images/icon-192.png", "sizes": "192x192" }]
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Dashboard Mobile"
+    }
+  ],
+  "related_applications": [],
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
 }

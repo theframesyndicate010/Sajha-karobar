@@ -31,56 +31,84 @@
     <style>
         body { font-family: 'Inter', sans-serif; padding-top: env(safe-area-inset-top); }
         
-        /* Custom Scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Bank-style stat cards */
+        .bank-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+        .bank-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.15);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #c1c1c1; 
-            border-radius: 4px;
+        .bank-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            border-radius: 4px 0 0 4px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8; 
+        .bank-card-navy::before { background: linear-gradient(180deg, #1e3a5f, #2563eb); }
+        .bank-card-amber::before { background: linear-gradient(180deg, #f59e0b, #d97706); }
+        .bank-card-blue::before { background: linear-gradient(180deg, #2563eb, #3b82f6); }
+        .bank-card-slate::before { background: linear-gradient(180deg, #475569, #1e293b); }
+
+        /* Hero banner gradient */
+        .bank-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
         }
 
-        /* Animation for cards */
-        .stat-card {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        /* Subtle pattern overlay */
+        .bank-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        /* Mobile table responsive */
+        /* Table styles */
+        .bank-table thead th {
+            background: #0f172a;
+            color: #e2e8f0;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .bank-table tbody tr {
+            transition: background 0.15s;
+        }
+        .bank-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        /* Mobile responsive */
         @media (max-width: 768px) {
-            table {
-                font-size: 11px;
-            }
-            table thead th {
-                padding: 6px 8px;
-                font-size: 10px;
-                white-space: nowrap;
-            }
-            table tbody td {
-                padding: 6px 8px;
-                font-size: 11px;
-                white-space: nowrap;
-            }
-            .overflow-x-auto {
-                -webkit-overflow-scrolling: touch;
-            }
-            .overflow-x-auto table {
-                min-width: 600px;
-            }
+            .bank-table { font-size: 11px; }
+            .bank-table thead th { padding: 8px 10px; font-size: 9px; }
+            .bank-table tbody td { padding: 8px 10px; font-size: 11px; white-space: nowrap; }
+            .overflow-x-auto { -webkit-overflow-scrolling: touch; }
+            .overflow-x-auto table { min-width: 600px; }
+            .bank-hero { padding: 1.25rem !important; }
+        }
+
+        /* Glassmorphic section */
+        .glass-section {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 h-screen overflow-hidden flex">
+<body class="bg-slate-50 text-gray-800 h-screen overflow-hidden flex">
 
     <!-- Sidebar Container -->
     <div id="sidebar-container"></div>
@@ -89,35 +117,35 @@
     <main class="flex-1 flex flex-col min-w-0 h-full">
         
         <!-- Header -->
-        <header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-4 lg:px-8 z-10">
+        <header class="bg-white/90 backdrop-blur-md border-b border-slate-200/60 h-16 flex items-center justify-between px-4 lg:px-8 z-10">
             <!-- Left: Mobile Menu & Search -->
             <div class="flex items-center gap-4 flex-1">
-                <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-[#1e3a5f] p-1">
+                <button onclick="toggleSidebar()" class="lg:hidden text-slate-500 hover:text-[#0f172a] p-1">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
                 
                 <div class="relative w-full max-w-md hidden sm:block">
-                    <span class="absolute left-3 top-2.5 text-gray-400">
+                    <span class="absolute left-3 top-2.5 text-slate-400">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <input type="text" id="global-search" name="search" placeholder="Search items, bills, or customers..." class="w-full bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-blue-200 rounded-lg py-2 pl-10 pr-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-100">
+                    <input type="text" id="global-search" name="search" placeholder="Search transactions, products..." class="w-full bg-slate-100 hover:bg-slate-50 focus:bg-white border border-transparent focus:border-blue-300 rounded-xl py-2 pl-10 pr-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-100">
                 </div>
             </div>
 
             <!-- Right: Notifications & Profile -->
             <div class="flex items-center gap-4 lg:gap-6">
-                <button class="relative text-gray-400 hover:text-[#1e3a5f] transition p-2 rounded-full hover:bg-gray-50">
+                <button class="relative text-slate-400 hover:text-[#0f172a] transition p-2 rounded-full hover:bg-slate-100">
                     <i class="fa-regular fa-bell text-xl"></i>
-                    <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-amber-400 rounded-full border-2 border-white"></span>
+                    <span class="absolute top-1.5 right-2 h-2.5 w-2.5 bg-amber-400 rounded-full border-2 border-white animate-pulse"></span>
                 </button>
                 
-                <div class="h-8 w-px bg-gray-200 hidden sm:block"></div>
+                <div class="h-8 w-px bg-slate-200 hidden sm:block"></div>
 
-                <div class="flex items-center gap-3 cursor-pointer p-1 rounded-lg hover:bg-gray-50 transition">
+                <div class="flex items-center gap-3 cursor-pointer p-1 rounded-xl hover:bg-slate-50 transition">
                     <div class="text-right hidden sm:block">
-                        <p id="headerUserName" class="text-sm font-bold text-gray-800 leading-none">Loading...</p>
+                        <p id="headerUserName" class="text-sm font-bold text-slate-800 leading-none">Loading...</p>
                     </div>
-                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 text-amber-400 border border-slate-600 flex items-center justify-center font-bold shadow-sm">
+                    <div id="headerUserInitial" class="h-10 w-10 rounded-full bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] text-amber-400 border-2 border-amber-400/20 flex items-center justify-center font-bold shadow-md">
                         ?
                     </div>
                 </div>
@@ -125,75 +153,88 @@
         </header>
 
         <!-- Scrollable Dashboard Area -->
-        <div class="flex-1 overflow-y-auto p-4 lg:p-8">
+        <div class="flex-1 overflow-y-auto">
             
-            <!-- Dashboard Title & Action -->
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
-                    <p class="text-gray-500 text-sm mt-1">Welcome back! Here's what's happening at your store today.</p>
-                </div>
-                <div class="flex gap-3">
-                    <button class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium text-sm shadow-sm transition">
-                        <i class="fa-solid fa-download mr-2"></i> Report
-                    </button>
-                    <button class="bg-[#0f172a] hover:bg-[#1e3a5f] text-white px-5 py-2 rounded-lg font-medium shadow-md shadow-slate-400/20 flex items-center gap-2 transition active:scale-95">
-                        <i class="fa-solid fa-computer"></i> POS Counter
-                    </button>
+            <!-- Bank Hero Section -->
+            <div class="bank-hero relative px-4 lg:px-8 py-6 lg:py-8">
+                <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                    <div>
+                        <p class="text-amber-400/80 text-xs font-semibold uppercase tracking-widest mb-1">Account Overview</p>
+                        <h2 class="text-xl lg:text-2xl font-bold text-white">Dashboard</h2>
+                        <p class="text-slate-400 text-sm mt-1">Monitor your business performance in real-time</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="bg-white/10 backdrop-blur border border-white/20 text-white hover:bg-white/20 px-4 py-2 rounded-xl font-medium text-sm transition">
+                            <i class="fa-solid fa-download mr-2"></i> Report
+                        </button>
+                        <button class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#0f172a] px-5 py-2 rounded-xl font-semibold shadow-lg shadow-amber-400/20 flex items-center gap-2 transition active:scale-95 text-sm">
+                            <i class="fa-solid fa-computer"></i> POS Counter
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- 1. STATS GRID - 2x2 Compact Cards / 4 columns on big screens -->
-            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-1 lg:gap-3 mb-4 lg:mb-6">
+            <div class="px-4 lg:px-8 -mt-6 relative z-20 pb-6">
+
+            <!-- 1. STATS GRID - Premium Bank Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-6">
                 <!-- Card 1: Total Products -->
-                <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#1e3a5f] text-sm lg:text-base mb-0.5">
-                        <i class="fa-solid fa-boxes-stacked"></i>
+                <div class="bank-card bank-card-navy bg-white rounded-xl shadow-sm border border-slate-100 p-3 lg:p-5">
+                    <div class="flex items-center justify-between mb-2 lg:mb-3">
+                        <div class="h-9 w-9 lg:h-10 lg:w-10 bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] rounded-lg flex items-center justify-center text-white shadow-md">
+                            <i class="fa-solid fa-boxes-stacked text-sm"></i>
+                        </div>
+                        <span class="text-[9px] lg:text-xs font-semibold text-slate-400 uppercase tracking-wider">Products</span>
                     </div>
-                    <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Products</p>
-                    <p id="total-products" class="text-lg lg:text-2xl font-bold text-gray-800 mt-0.5">--</p>
-                    <p id="total-stock-label" class="text-[6px] lg:text-[7px] text-gray-400 font-medium">Loading</p>
+                    <p id="total-products" class="text-xl lg:text-3xl font-extrabold text-slate-800 leading-tight">--</p>
+                    <p id="total-stock-label" class="text-[10px] lg:text-xs text-slate-400 mt-1">Loading</p>
                 </div>
                 <!-- Card 2: Revenue -->
-                <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#1e3a5f] text-sm lg:text-base mb-0.5">
-                        <i class="fa-solid fa-sack-dollar"></i>
+                <div class="bank-card bank-card-amber bg-white rounded-xl shadow-sm border border-slate-100 p-3 lg:p-5">
+                    <div class="flex items-center justify-between mb-2 lg:mb-3">
+                        <div class="h-9 w-9 lg:h-10 lg:w-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center text-white shadow-md">
+                            <i class="fa-solid fa-sack-dollar text-sm"></i>
+                        </div>
+                        <span class="text-[9px] lg:text-xs font-semibold text-slate-400 uppercase tracking-wider">Revenue</span>
                     </div>
-                    <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Revenue</p>
-                    <p id="total-revenue" class="text-lg lg:text-2xl font-bold text-gray-800 mt-0.5">--</p>
-                    <p id="avg-sale-label" class="text-[6px] lg:text-[7px] text-gray-400 font-medium">Loading</p>
+                    <p id="total-revenue" class="text-xl lg:text-3xl font-extrabold text-slate-800 leading-tight">--</p>
+                    <p id="avg-sale-label" class="text-[10px] lg:text-xs text-slate-400 mt-1">Loading</p>
                 </div>
                 <!-- Card 3: Total Sales Count -->
-                <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#1e3a5f] text-sm lg:text-base mb-0.5">
-                        <i class="fa-solid fa-arrow-trend-up"></i>
+                <div class="bank-card bank-card-blue bg-white rounded-xl shadow-sm border border-slate-100 p-3 lg:p-5">
+                    <div class="flex items-center justify-between mb-2 lg:mb-3">
+                        <div class="h-9 w-9 lg:h-10 lg:w-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center text-white shadow-md">
+                            <i class="fa-solid fa-arrow-trend-up text-sm"></i>
+                        </div>
+                        <span class="text-[9px] lg:text-xs font-semibold text-slate-400 uppercase tracking-wider">Sales</span>
                     </div>
-                    <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Sales</p>
-                    <p id="total-sales" class="text-lg lg:text-2xl font-bold text-gray-800 mt-0.5">--</p>
-                    <p id="avg-qty-label" class="text-[6px] lg:text-[7px] text-gray-400 font-medium">Loading</p>
+                    <p id="total-sales" class="text-xl lg:text-3xl font-extrabold text-slate-800 leading-tight">--</p>
+                    <p id="avg-qty-label" class="text-[10px] lg:text-xs text-slate-400 mt-1">Loading</p>
                 </div>
                 <!-- Card 4: Stock Status -->
-                <div class="stat-card bg-white px-1.5 py-2 lg:px-3 lg:py-4 rounded-md lg:rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center">
-                    <div class="h-6 w-6 lg:h-8 lg:w-8 bg-slate-100 rounded flex items-center justify-center text-[#1e3a5f] text-sm lg:text-base mb-0.5">
-                        <i class="fa-solid fa-warehouse"></i>
+                <div class="bank-card bank-card-slate bg-white rounded-xl shadow-sm border border-slate-100 p-3 lg:p-5">
+                    <div class="flex items-center justify-between mb-2 lg:mb-3">
+                        <div class="h-9 w-9 lg:h-10 lg:w-10 bg-gradient-to-br from-slate-500 to-slate-700 rounded-lg flex items-center justify-center text-white shadow-md">
+                            <i class="fa-solid fa-warehouse text-sm"></i>
+                        </div>
+                        <span class="text-[9px] lg:text-xs font-semibold text-slate-400 uppercase tracking-wider">Stock</span>
                     </div>
-                    <p class="text-[7px] lg:text-[9px] font-semibold text-gray-400 uppercase tracking-wide mt-0.5">Stock</p>
-                    <p id="total-stock" class="text-lg lg:text-2xl font-bold text-gray-800 mt-0.5">--</p>
-                    <p id="stock-alerts" class="text-[6px] lg:text-[7px] text-gray-400 font-medium">Loading</p>
+                    <p id="total-stock" class="text-xl lg:text-3xl font-extrabold text-slate-800 leading-tight">--</p>
+                    <p id="stock-alerts" class="text-[10px] lg:text-xs text-slate-400 mt-1">Loading</p>
                 </div>
             </div>
 
             <!-- 2. MAIN CONTENT AREA (Chart + Top Items) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 mb-6">
                 
                 <!-- Chart Section -->
-                <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center justify-between mb-6">
+                <div class="lg:col-span-2 bg-white p-5 lg:p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-5">
                         <div>
-                            <h3 class="font-bold text-gray-800 text-lg">Sales Analytics</h3>
-                            <p class="text-xs text-gray-500">Revenue vs. Profit over time</p>
+                            <h3 class="font-bold text-slate-800 text-base lg:text-lg">Sales Analytics</h3>
+                            <p class="text-xs text-slate-400">Revenue & volume trends</p>
                         </div>
-                        <select id="sales-period-filter" name="sales-period" class="text-xs border border-gray-200 bg-gray-50 rounded-lg px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200 cursor-pointer">
+                        <select id="sales-period-filter" name="sales-period" class="text-xs border border-slate-200 bg-slate-50 rounded-lg px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200 cursor-pointer font-medium text-slate-600">
                             <option>This Week</option>
                             <option>Last Week</option>
                             <option>This Month</option>
@@ -205,96 +246,102 @@
                 </div>
 
                 <!-- Top Selling Items -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
-                    <h3 class="font-bold text-gray-800 text-lg mb-4">Top Selling Items</h3>
+                <div class="bg-white p-5 lg:p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-800 text-base lg:text-lg">Top Performers</h3>
+                        <span class="text-[10px] font-semibold bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full border border-amber-100">LIVE</span>
+                    </div>
                     
-                    <div id="top-products-list" class="flex-1 overflow-y-auto space-y-4 pr-1">
+                    <div id="top-products-list" class="flex-1 overflow-y-auto space-y-3 pr-1">
                         <!-- Items will be dynamically inserted here -->
                     </div>
                     
-                    <a href="/stock" class="w-full mt-4 py-2.5 text-sm text-[#1e3a5f] font-semibold bg-blue-50 hover:bg-blue-100 rounded-lg transition flex items-center justify-center gap-2">
+                    <a href="/stock" class="w-full mt-4 py-2.5 text-sm text-[#0f172a] font-semibold bg-slate-50 hover:bg-slate-100 rounded-xl transition flex items-center justify-center gap-2 border border-slate-200">
                         View All Stocks <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
             </div>
 
             <!-- 3. PRODUCT LIST TABLE -->
-            <div id="product-list-section" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div id="product-list-section" class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-6">
+                <div class="p-5 lg:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                        <h3 class="font-bold text-gray-800 text-lg">Product List</h3>
-                        <p class="text-xs text-gray-500">Search, filter, and manage your products</p>
+                        <h3 class="font-bold text-slate-800 text-base lg:text-lg">Product Portfolio</h3>
+                        <p class="text-xs text-slate-400">Manage and monitor your product inventory</p>
                     </div>
                     <div class="flex gap-2">
-                        <input type="text" id="product-search" placeholder="Search by product name..." class="w-full sm:w-64 bg-gray-100 hover:bg-gray-50 focus:bg-white border border-transparent focus:border-blue-200 rounded-lg py-2 px-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-100">
-                        <select id="category-filter" class="text-xs border border-gray-200 bg-gray-50 rounded-lg px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200 cursor-pointer">
+                        <input type="text" id="product-search" placeholder="Search products..." class="w-full sm:w-56 bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-blue-300 rounded-xl py-2 px-4 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-100">
+                        <select id="category-filter" class="text-xs border border-slate-200 bg-slate-50 rounded-xl px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200 cursor-pointer font-medium text-slate-600">
                             <option value="">All Categories</option>
                         </select>
-                        <label class="flex items-center gap-2 text-xs font-medium text-gray-500">
-                            <input type="checkbox" id="in-stock-filter" class="h-4 w-4 rounded border-gray-300 text-[#1e3a5f] focus:ring-blue-500">
-                            In Stock Only
+                        <label class="flex items-center gap-2 text-xs font-medium text-slate-500 whitespace-nowrap">
+                            <input type="checkbox" id="in-stock-filter" class="h-4 w-4 rounded border-slate-300 text-[#0f172a] focus:ring-blue-500 accent-[#0f172a]">
+                            In Stock
                         </label>
                     </div>
                 </div>
                 
                 <div class="overflow-x-auto">
-                    <table id="product-table" class="w-full text-left border-collapse">
+                    <table id="product-table" class="bank-table w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-[#0f172a] text-white text-xs uppercase tracking-wider">
-                                <th class="py-4 px-6 font-semibold">Product Name</th>
-                                <th class="py-4 px-6 font-semibold">Category</th>
-                                <th class="py-4 px-6 font-semibold">Price</th>
-                                <th class="py-4 px-6 font-semibold">Remaining Stock</th>
+                            <tr>
+                                <th class="py-3 px-6 font-semibold">Product Name</th>
+                                <th class="py-3 px-6 font-semibold">Category</th>
+                                <th class="py-3 px-6 font-semibold">Price</th>
+                                <th class="py-3 px-6 font-semibold">Remaining Stock</th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm divide-y divide-gray-50">
+                        <tbody class="text-sm divide-y divide-slate-50">
                             <!-- Product rows will be dynamically inserted here -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- 4. RECENT BILLS TABLE -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mt-8">
-                <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <!-- 4. RECENT TRANSACTIONS TABLE -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-6">
+                <div class="p-5 lg:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                        <h3 class="font-bold text-gray-800 text-lg">Recent Transactions</h3>
-                        <p class="text-xs text-gray-500">Latest bills generated from POS</p>
+                        <h3 class="font-bold text-slate-800 text-base lg:text-lg">Recent Transactions</h3>
+                        <p class="text-xs text-slate-400">Latest transactions from point of sale</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="text-xs font-medium text-gray-500 hover:text-[#1e3a5f] px-3 py-1.5 border border-gray-200 rounded-md bg-gray-50">Filter</button>
-                        <button class="text-xs font-medium text-white px-3 py-1.5 rounded-md bg-gray-800 hover:bg-gray-700">Export CSV</button>
+                        <button class="text-xs font-medium text-slate-500 hover:text-[#0f172a] px-3 py-1.5 border border-slate-200 rounded-lg bg-slate-50 hover:bg-slate-100 transition">Filter</button>
+                        <button class="text-xs font-medium text-white px-3 py-1.5 rounded-lg bg-[#0f172a] hover:bg-[#1e3a5f] transition">Export CSV</button>
                     </div>
                 </div>
                 
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                    <table class="bank-table w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-[#0f172a] text-white text-xs uppercase tracking-wider">
-                                <th class="py-4 px-6 font-semibold">Bill ID</th>
-                                <th class="py-4 px-6 font-semibold">Customer Name</th>
-                                <th class="py-4 px-6 font-semibold">Date</th>
-                                <th class="py-4 px-6 font-semibold">Amount</th>
-                                <th class="py-4 px-6 font-semibold">Payment</th>
-                                <th class="py-4 px-6 font-semibold">Status</th>
-                                <th class="py-4 px-6 font-semibold text-right">Action</th>
+                            <tr>
+                                <th class="py-3 px-6 font-semibold">Bill ID</th>
+                                <th class="py-3 px-6 font-semibold">Customer Name</th>
+                                <th class="py-3 px-6 font-semibold">Date</th>
+                                <th class="py-3 px-6 font-semibold">Amount</th>
+                                <th class="py-3 px-6 font-semibold">Payment</th>
+                                <th class="py-3 px-6 font-semibold">Status</th>
+                                <th class="py-3 px-6 font-semibold text-right">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="recent-sales-body" class="text-sm divide-y divide-gray-50">
+                        <tbody id="recent-sales-body" class="text-sm divide-y divide-slate-50">
                             <!-- Rows will be dynamically inserted here -->
                         </tbody>
                     </table>
                 </div>
-                <div class="p-4 border-t border-gray-100 flex items-center justify-center">
-                    <button class="text-sm font-medium text-[#1e3a5f] hover:text-[#1e3a5f] transition">View All Transactions</button>
+                <div class="p-4 border-t border-slate-100 flex items-center justify-center">
+                    <button class="text-sm font-semibold text-[#0f172a] hover:text-[#1e3a5f] transition flex items-center gap-2">
+                        View All Transactions <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
                 </div>
             </div>
 
             <!-- Footer -->
-            <footer class="mt-8 text-center text-gray-400 text-xs pb-4">
-                &copy; 2026 sajha karobar. All rights reserved.
+            <footer class="text-center text-slate-400 text-xs pb-6">
+                &copy; 2026 sajha karobar &mdash; Secure Business Management
             </footer>
 
+            </div><!-- close px-4 wrapper -->
         </div>
     </main>
 </body>

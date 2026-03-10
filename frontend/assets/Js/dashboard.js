@@ -51,8 +51,8 @@ function initChart() {
     const ctx = canvas.getContext('2d');
 
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(22, 163, 74, 0.2)');
-    gradient.addColorStop(1, 'rgba(22, 163, 74, 0.0)');
+    gradient.addColorStop(0, 'rgba(30, 58, 95, 0.15)');
+    gradient.addColorStop(1, 'rgba(30, 58, 95, 0.0)');
 
     salesChart = new Chart(ctx, {
         type: 'line',
@@ -208,18 +208,18 @@ async function fetchTopProducts() {
             return;
         }
 
-        topProductsList.innerHTML = products.map(product => `
-            <div class="flex items-center justify-between py-3">
+        topProductsList.innerHTML = products.map((product, idx) => `
+            <div class="flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-slate-50 transition group">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500">
-                        <i class="fa-solid fa-box"></i>
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold group-hover:from-[#0f172a] group-hover:to-[#1e3a5f] group-hover:text-white transition">
+                        ${idx + 1}
                     </div>
                     <div>
-                        <p class="font-medium text-sm text-gray-800">${product.product_name || product.name || 'Unknown'}</p>
-                        <p class="text-xs text-gray-500">Sold: ${(product.total_quantity_sold || product.total_units_sold || 0).toLocaleString()}</p>
+                        <p class="font-semibold text-sm text-slate-800">${product.product_name || product.name || 'Unknown'}</p>
+                        <p class="text-[11px] text-slate-400">${(product.total_quantity_sold || product.total_units_sold || 0).toLocaleString()} units sold</p>
                     </div>
                 </div>
-                <p class="font-semibold text-sm text-gray-800">Rs ${(product.total_revenue || 0).toLocaleString()}</p>
+                <p class="font-bold text-sm text-[#0f172a]">Rs ${(product.total_revenue || 0).toLocaleString()}</p>
             </div>
         `).join('');
     } catch (error) {
@@ -312,24 +312,24 @@ async function fetchRecentSales() {
             const amount = (sale.total_amount || 0).toLocaleString();
 
             return `
-                <tr class="hover:bg-gray-50 transition group">
-                    <td class="py-4 px-6 font-medium text-[#1e3a5f]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
+                <tr class="hover:bg-slate-50 transition group">
+                    <td class="py-4 px-6 font-semibold text-[#1e3a5f]">#SALE-${String(sale.id).slice(-4).padStart(4, '0')}</td>
                     <td class="py-4 px-6">
                         <div class="flex items-center gap-3">
-                            <div class="h-8 w-8 rounded-full bg-${color}-100 text-${color}-600 flex items-center justify-center text-xs font-bold">${initials}</div>
-                            <span class="font-medium text-gray-800">${productName}</span>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] text-amber-400 flex items-center justify-center text-xs font-bold">${initials}</div>
+                            <span class="font-medium text-slate-800">${productName}</span>
                         </div>
                     </td>
-                    <td class="py-4 px-6 text-gray-500">${date}</td>
-                    <td class="py-4 px-6 font-bold text-gray-800">Rs ${amount}</td>
-                    <td class="py-4 px-6 text-gray-500">${sale.quantity_sold || 0} units</td>
+                    <td class="py-4 px-6 text-slate-500">${date}</td>
+                    <td class="py-4 px-6 font-bold text-slate-800">Rs ${amount}</td>
+                    <td class="py-4 px-6 text-slate-500">${sale.quantity_sold || 0} units</td>
                     <td class="py-4 px-6">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-50 text-[#0f172a] border border-slate-200">
-                            <span class="h-1.5 w-1.5 rounded-full bg-slate-500"></span> Completed
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> Completed
                         </span>
                     </td>
                     <td class="py-4 px-6 text-right">
-                        <button class="text-gray-400 hover:text-gray-800 p-1"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <button class="text-slate-400 hover:text-[#0f172a] p-1 rounded-lg hover:bg-slate-100 transition"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                     </td>
                 </tr>
             `;
