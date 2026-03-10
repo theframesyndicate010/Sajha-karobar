@@ -40,15 +40,16 @@
         .bank-card {
             position: relative;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 2px 12px -4px rgba(15, 23, 42, 0.08);
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
         .bank-card:hover {
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.95);
             box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.12);
         }
         .bank-card::before {
@@ -82,8 +83,8 @@
 
         /* Table styles */
         .bank-table thead th {
-            background: #0f172a;
-            color: #e2e8f0;
+            background: #475569;
+            color: #f1f5f9;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -179,7 +180,7 @@
                 </div>
             </div>
 
-            <div class="px-4 lg:px-8 -mt-6 relative z-20 pb-6">
+            <div class="px-4 lg:px-8 -mt-3 lg:-mt-6 relative z-20 pb-6">
 
             <!-- 1. STATS GRID - Glass Cards -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 lg:gap-3 mb-5">
@@ -356,5 +357,31 @@
     document.addEventListener('DOMContentLoaded', function() {
         initSidebar('dashboard');
     });
+
+    // iOS PWA Install Banner
+    (function() {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        const dismissed = sessionStorage.getItem('iosInstallDismissed');
+        if (isIOS && !isStandalone && !dismissed) {
+            var banner = document.createElement('div');
+            banner.id = 'iosBanner';
+            banner.style.cssText = 'position:fixed;bottom:60px;left:0;right:0;z-index:9999;padding:12px;';
+            banner.innerHTML = '<div style="max-width:420px;margin:0 auto;background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(0,0,0,0.25);">'
+                + '<div style="display:flex;align-items:center;gap:10px;">'
+                + '<img src="/assets/images/icon-192.png" alt="App" style="width:40px;height:40px;border-radius:10px;">'
+                + '<div style="flex:1;min-width:0;">'
+                + '<p style="color:#fff;font-size:12px;font-weight:600;margin:0;">Install sajha karobar</p>'
+                + '<p style="color:#94a3b8;font-size:10px;margin:2px 0 0;">Tap <svg style="display:inline;width:12px;height:12px;vertical-align:-2px;" fill="#3b82f6" viewBox="0 0 24 24"><path d="M12 2l3.5 3.5-1.4 1.4L13 5.8V16h-2V5.8L9.9 6.9 8.5 5.5 12 2zm7 9v9c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2v-9h2v9h10v-9h2z"/></svg> then "Add to Home Screen"</p>'
+                + '</div>'
+                + '<button id="iosDismiss" style="color:#94a3b8;background:rgba(255,255,255,0.1);border:none;border-radius:8px;width:26px;height:26px;font-size:14px;cursor:pointer;flex-shrink:0;">✕</button>'
+                + '</div></div>';
+            document.body.appendChild(banner);
+            document.getElementById('iosDismiss').addEventListener('click', function() {
+                banner.remove();
+                sessionStorage.setItem('iosInstallDismissed', '1');
+            });
+        }
+    })();
 </script>
 </html>

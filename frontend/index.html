@@ -127,14 +127,27 @@
         });
     </script>
 
-    <!-- Auto-redirect based on auth -->
+    <!-- Auto-redirect based on auth (delayed on iOS to show install guide) -->
     <script>
         (function() {
             const token = localStorage.getItem('token');
-            if (token) {
-                window.location.href = '/dashboard';
+            const dest = token ? '/dashboard' : '/login';
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+            // If iOS and NOT already installed, delay redirect so user can see install instructions
+            if (isIOS && !isStandalone) {
+                // Show a "Continue" button so user can proceed when ready
+                const continueBtn = document.createElement('button');
+                continueBtn.textContent = 'Continue to App →';
+                continueBtn.className = 'mt-5 bg-white/10 backdrop-blur border border-white/20 text-white hover:bg-white/20 font-semibold py-2.5 px-6 rounded-xl transition text-sm fade-in-delayed';
+                continueBtn.style.cssText = 'animation: fadeIn 0.6s ease-out 0.5s both;';
+                continueBtn.addEventListener('click', function() { window.location.href = dest; });
+                document.querySelector('.text-center').appendChild(continueBtn);
+                // Auto-redirect after 6 seconds if user doesn't tap
+                setTimeout(function() { window.location.href = dest; }, 6000);
             } else {
-                window.location.href = '/login';
+                window.location.href = dest;
             }
         })();
     </script>
